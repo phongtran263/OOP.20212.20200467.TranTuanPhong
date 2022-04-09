@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class LinearSolver {
+public class EquationSolver {
 
 	public static void main(String[] args) {
 
