@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class WorkingWithArray {
@@ -9,11 +10,7 @@ public class WorkingWithArray {
 		double sum = 0, average;
 		
 		ArrayList<Number> array = new ArrayList<Number>();
-		array.add(1789);
-		array.add(2035);
-		array.add(1899);
-		array.add(1456);
-		array.add(2013);
+		array.addAll(new ArrayList<Number>(Arrays.asList(123,323,3453,12,34,231,1.6434,787,32,23.34,56.678,8,43,1.123132,456,876)));
 
 		
 		MergeSort(array);

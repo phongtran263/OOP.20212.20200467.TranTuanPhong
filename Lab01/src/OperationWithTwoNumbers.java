@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class OperationCaculator {
+public class OperationWithTwoNumbers {
 
 	public static void main(String[] args) {
 
