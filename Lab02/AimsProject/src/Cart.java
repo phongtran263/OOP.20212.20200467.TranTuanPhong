@@ -37,14 +37,14 @@ public class Cart {
 	}
 	
 	public float totalCost() {
-		float Tcost = 0;
+		float cost = 0;
 		for(DigitalVideoDisc disc: itemOrdered) {
 			if(disc != null) {
-				Tcost+=disc.getCost();
+				cost+=disc.getCost();
 			}
 		}
-		System.out.print("The total cost is: ");
-		return Tcost;		
+		
+		return cost;		
 	}
 	
 	
