@@ -8,17 +8,26 @@ public class DigitalVideoDisc {
 	
 	public DigitalVideoDisc(String category, String title, float cost) {
 		super();
+		this.category = category;
 		this.title = title;
+		this.cost = cost;
 	}
 	
 	public DigitalVideoDisc(String director, String category, String title, float cost) {
 		super();
+		this.director = director;
+		this.category = category;
 		this.title = title;
+		this.cost = cost;
 	}
 	
 	public DigitalVideoDisc(String director, String category, String title, int length, float cost) {
 		super();
+		this.director = director;
+		this.category = category;
 		this.title = title;
+		this.length = length;		
+		this.cost = cost;
 	}
 	
 	private String title;
@@ -28,23 +37,23 @@ public class DigitalVideoDisc {
 	private float cost;
 	
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 	
 	public String getCategory() {
-		return category;
+		return this.category;
 	}
 	
 	public String getDirector() {
-		return director;
+		return this.director;
 	}
 	
 	public int getLength() {
-		return length;
+		return this.length;
 	}
 	
 	public float getCost() {
-		return cost;
+		return this.cost;
 	}
 	
 }
