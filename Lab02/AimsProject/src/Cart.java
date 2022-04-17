@@ -3,7 +3,7 @@ public class Cart {
 	
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private DigitalVideoDisc itemOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
-	int qtyOrdered = 0;
+	private int qtyOrdered = 0;
 	
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
 		if(qtyOrdered == MAX_NUMBERS_ORDERED) {
@@ -32,18 +32,19 @@ public class Cart {
 				}
 			}
 			itemOrdered[qtyOrdered - 1] = null;
+			System.out.println("This disc has been removed");
 		}
 	}
 	
 	public float totalCost() {
-		float cost = 0;
+		float Tcost = 0;
 		for(DigitalVideoDisc disc: itemOrdered) {
 			if(disc != null) {
-				cost+=disc.getCost();
+				Tcost+=disc.getCost();
 			}
 		}
-		
-		return cost;		
+		System.out.print("The total cost is: ");
+		return Tcost;		
 	}
 	
 	
