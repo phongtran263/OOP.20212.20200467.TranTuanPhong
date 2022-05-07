@@ -42,10 +42,10 @@ public class Cart {
 				itemOrdered[qtyOrdered - 1] = null;
 				qtyOrdered--;
 				System.out.println("This disc has been removed");
+				return 1;
 			}
 		}
-		return k + 1;
-		
+		return 0;
 	}
 	
 	public float totalCost() {
