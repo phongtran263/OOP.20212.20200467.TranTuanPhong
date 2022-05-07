@@ -12,9 +12,21 @@ public class Cart {
 		}
 		
 		else {
-			itemOrdered[qtyOrdered] = disc;
-			qtyOrdered++;
-			System.out.println("The disc has been added");
+			int b = 0;
+			for(int i = 0; i < qtyOrdered; i++) {
+				if(itemOrdered[i].getTitle() == disc.getTitle()) {
+					b = 1;
+				}
+			}
+			
+			if(b == 0) {
+				itemOrdered[qtyOrdered] = disc;
+				qtyOrdered++;
+				System.out.println("The disc has been added");
+			}
+			else {
+				System.out.println("The disc has already in the cart");
+			}
 		}
 	}
 	
