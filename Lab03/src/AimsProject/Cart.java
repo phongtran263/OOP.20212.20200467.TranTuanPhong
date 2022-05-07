@@ -30,6 +30,30 @@ public class Cart {
 		}
 	}
 	
+	public void addDigitalVideoDisc(DigitalVideoDisc disc1, DigitalVideoDisc disc2) {
+		addDigitalVideoDisc(disc1);
+		addDigitalVideoDisc(disc2);
+	}
+	
+	public int addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
+		int MaxNumSlotsLeft = MAX_NUMBERS_ORDERED - qtyOrdered;
+		int curQty = qtyOrdered;
+		
+		for(int i = 0; i < Math.min(MaxNumSlotsLeft, dvdList.length); i++) {
+			addDigitalVideoDisc(dvdList[i]);
+		}
+		
+		return qtyOrdered - curQty;
+	}
+
+//	public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
+//		int MaxNumSlotsLeft = MAX_NUMBERS_ORDERED - qtyOrdered;
+//		
+//		for(int i = 0; i < Math.min(MaxNumSlotsLeft, dvdList.length); i++) {
+//			addDigitalVideoDisc(dvdList[i]);
+//		}
+//	}
+	
 	public int removeDigitalVideoDisc(DigitalVideoDisc disc) {
 		int k = -1;
 		if(qtyOrdered == 0) {
