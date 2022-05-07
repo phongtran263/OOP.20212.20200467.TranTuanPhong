@@ -40,6 +40,7 @@ public class Cart {
 			}
 			else {
 				itemOrdered[qtyOrdered - 1] = null;
+				qtyOrdered--;
 				System.out.println("This disc has been removed");
 			}
 		}
