@@ -26,7 +26,7 @@ public class Cart {
 		
 		else {
 			for(int i = 0; i < qtyOrdered; i++) {
-				if(itemOrdered[i] == disc) {
+				if(itemOrdered[i].getTitle() == disc.getTitle()) {
 					k = i;
 				}
 			}
@@ -40,11 +40,12 @@ public class Cart {
 			}
 			else {
 				itemOrdered[qtyOrdered - 1] = null;
+				qtyOrdered--;
 				System.out.println("This disc has been removed");
+				return 1;
 			}
 		}
-		return k + 1;
-		
+		return 0;
 	}
 	
 	public float totalCost() {
