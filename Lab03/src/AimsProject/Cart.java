@@ -26,7 +26,7 @@ public class Cart {
 		
 		else {
 			for(int i = 0; i < qtyOrdered; i++) {
-				if(itemOrdered[i] == disc) {
+				if(itemOrdered[i].getTitle() == disc.getTitle()) {
 					k = i;
 				}
 			}
