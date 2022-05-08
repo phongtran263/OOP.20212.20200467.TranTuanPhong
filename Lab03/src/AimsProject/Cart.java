@@ -37,13 +37,13 @@ public class Cart {
 	
 	public int addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
 		int MaxNumSlotsLeft = MAX_NUMBERS_ORDERED - qtyOrdered;
-		int curQty = qtyOrdered;
+		int prevQty = qtyOrdered;
 		
 		for(int i = 0; i < Math.min(MaxNumSlotsLeft, dvdList.length); i++) {
 			addDigitalVideoDisc(dvdList[i]);
 		}
 		
-		return qtyOrdered - curQty;
+		return qtyOrdered - prevQty;
 	}
 
 //	public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
@@ -66,15 +66,13 @@ public class Cart {
 					k = i;
 				}
 			}
-			if(k >= 0 && k < qtyOrdered - 1) {
-				for(int i = k; i < qtyOrdered - 1; i++) {
-					itemOrdered[i] = itemOrdered[i+1];
-				}
-			}
 			if(k == -1) {
 				System.out.println("This disc is not in cart");
 			}
 			else {
+				for(int i = k; i < qtyOrdered - 1; i++) {
+					itemOrdered[i] = itemOrdered[i+1];
+				}
 				itemOrdered[qtyOrdered - 1] = null;
 				qtyOrdered--;
 				System.out.println("This disc has been removed");
@@ -86,10 +84,8 @@ public class Cart {
 	
 	public float totalCost() {
 		float cost = 0;
-		for(DigitalVideoDisc disc: itemOrdered) {
-			if(disc != null) {
-				cost+=disc.getCost();
-			}
+		for(int i = 0; i < qtyOrdered; i++) {
+			cost+=itemOrdered[i].getCost();
 		}
 		
 		return cost;		
