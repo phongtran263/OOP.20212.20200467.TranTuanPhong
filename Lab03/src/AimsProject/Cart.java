@@ -45,13 +45,21 @@ public class Cart {
 		
 		return qtyOrdered - prevQty;
 	}
+	
+//*****************	
+//	I don't know how to create a method which allows to pass an arbitrary number of arguments for discs but a list of discs
+//	But in this case, I prefer to use the method with an array argument because we usually work a large data in the form of array (maybe 1D, 2D or more), so that way will be more convenient.
+//*****************	
 
-//	public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
+//	public int addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
 //		int MaxNumSlotsLeft = MAX_NUMBERS_ORDERED - qtyOrdered;
+//		int prevQty = qtyOrdered;
 //		
 //		for(int i = 0; i < Math.min(MaxNumSlotsLeft, dvdList.length); i++) {
 //			addDigitalVideoDisc(dvdList[i]);
 //		}
+//		
+//		return qtyOrdered - prevQty;
 //	}
 	
 	public int removeDigitalVideoDisc(DigitalVideoDisc disc) {
