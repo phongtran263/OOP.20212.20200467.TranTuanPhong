@@ -47,8 +47,7 @@ public class Cart {
 	}
 	
 //*****************	
-//	I don't know how to create a method which allows to pass an arbitrary number of arguments for discs but a list of discs
-//	But in this case, I prefer to use the method with an array argument because we usually work a large data in the form of array (maybe 1D, 2D or more), so that way will be more convenient.
+//	In this case, I prefer to use the method with a variable arguments because we can pass an array argument or just pass sequentially how many arguments you want to the method, then it seem to be more convenient
 //*****************	
 
 //	public int addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
