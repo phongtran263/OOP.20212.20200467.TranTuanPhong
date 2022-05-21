@@ -1,0 +1,7 @@
+QUESTION: If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does JAVA allow you to do this?
+
+ANSWER: Both title and constructor are String so when you declare a new DVD with a string argument, JAVA cannot determine whether that argument is title or category. In short, JAVA doesn’t allow you to do this.
+ 
+QUESTION: Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compared to an array parameter. What do you prefer in this case?
+
+ANSWER: In this case, I prefer to use the method with a variable arguments because we can pass an array argument or just pass sequentially how many arguments you want to the method, then it seem to be more convenient.
