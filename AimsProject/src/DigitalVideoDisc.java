@@ -1,8 +1,13 @@
+import java.time.LocalDate;
+
 public class DigitalVideoDisc {
 	
 	public DigitalVideoDisc(String title) {
 		super();
 		this.title = title;
+		this.dateAdded = LocalDate.now();
+		nbDigitalVideoDiscs++;
+		this.id = nbDigitalVideoDiscs;
 	}
 	
 	public DigitalVideoDisc(String category, String title, float cost) {
@@ -10,6 +15,9 @@ public class DigitalVideoDisc {
 		this.category = category;
 		this.title = title;
 		this.cost = cost;
+		this.dateAdded = LocalDate.now();
+		nbDigitalVideoDiscs++;
+		this.id = nbDigitalVideoDiscs;
 	}
 	
 	public DigitalVideoDisc(String director, String category, String title, float cost) {
@@ -18,6 +26,9 @@ public class DigitalVideoDisc {
 		this.category = category;
 		this.title = title;
 		this.cost = cost;
+		this.dateAdded = LocalDate.now();
+		nbDigitalVideoDiscs++;
+		this.id = nbDigitalVideoDiscs;
 	}
 	
 	public DigitalVideoDisc(String director, String category, String title, int length, float cost) {
@@ -27,6 +38,9 @@ public class DigitalVideoDisc {
 		this.title = title;
 		this.length = length;		
 		this.cost = cost;
+		this.dateAdded = LocalDate.now();
+		nbDigitalVideoDiscs++;
+		this.id = nbDigitalVideoDiscs;
 	}
 	
 	private String title;
@@ -34,6 +48,9 @@ public class DigitalVideoDisc {
 	private String director;
 	private int length;
 	private float cost;
+	private LocalDate dateAdded;
+	private static int nbDigitalVideoDiscs = 0;
+	int id = nbDigitalVideoDiscs;
 	
 	public String getTitle() {
 		return this.title;
@@ -73,6 +90,10 @@ public class DigitalVideoDisc {
 
 	public void setCost(float cost) {
 		this.cost = cost;
+	}
+
+	public LocalDate getDateAdded() {
+		return this.dateAdded;
 	}
 	
 }
