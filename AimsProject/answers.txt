@@ -5,3 +5,15 @@ ANSWER: Both title and constructor are String so when you declare a new DVD with
 QUESTION: Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compared to an array parameter. What do you prefer in this case?
 
 ANSWER: In this case, I prefer to use the method with a variable arguments because we can pass an array argument or just pass sequentially how many arguments you want to the method, then it seem to be more convenient.
+
+QUESTION: Is JAVA a Pass by Value or a Pass by Reference programming language?
+
+ANSWER: Java is a Pass-by-value programming language, not Pass by Reference programming language.
+
+QUESTION: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+
+ANSWER: When we call swap(jungleDVD, cinderellaDVD), we just implement with the copies of jungleDVD and cinderellaDVD. So that, our discs in the main class are not affected.
+
+QUESTION: After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+
+ANSWER: When we call changeTitle(jungleDVD, cinderellaDVD.getTitle()), the copies still point to the same reference locations of the discs in the main class and the values in the reference locations. So that, the title value changes.
