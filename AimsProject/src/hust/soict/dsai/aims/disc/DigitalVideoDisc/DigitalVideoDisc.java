@@ -11,7 +11,7 @@ public class DigitalVideoDisc {
 		this.id = nbDigitalVideoDiscs;
 	}
 	
-	public DigitalVideoDisc(String category, String title, float cost) {
+	public DigitalVideoDisc(String title, String category, float cost) {
 		super();
 		this.category = category;
 		this.title = title;
@@ -32,7 +32,7 @@ public class DigitalVideoDisc {
 		this.id = nbDigitalVideoDiscs;
 	}
 	
-	public DigitalVideoDisc(String director, String category, String title, int length, float cost) {
+	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super();
 		this.director = director;
 		this.category = category;
@@ -56,6 +56,23 @@ public class DigitalVideoDisc {
 	private LocalDate dateAdded;
 	private static int nbDigitalVideoDiscs = 0;
 	private int id = nbDigitalVideoDiscs;
+	
+	public boolean isMatch(String title) {
+		String[] myTitle = this.getTitle().split(" ");
+		String[] yourTitle = title.split(" ");
+		
+		for(int i = 0; i < myTitle.length; i++) {
+			for(int j = 0; j < yourTitle.length; j++) {
+				String str1 = myTitle[i].toLowerCase();
+				String str2 = yourTitle[j].toLowerCase();
+				if(str1.equals(str2)) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
 	
 	public String getTitle() {
 		return this.title;
