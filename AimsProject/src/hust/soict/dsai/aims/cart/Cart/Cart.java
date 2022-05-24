@@ -166,6 +166,27 @@ public class Cart {
 		}
 	}
 	
+	public void SearchByTitle(String title) {
+		int found = 0;
+		DigitalVideoDisc result = null;
+
+		for(int i = 0; i < qtyOrdered; i++) {
+			DigitalVideoDisc dvd = itemOrdered[i];
+			if(dvd.isMatch(title)) {
+				found = 1;
+				result = dvd;
+			}
+		}
+		
+		if(found == 1) {
+			System.out.println("Found disc: " + result.toString());
+		}
+		
+		else if(found == 0) {
+			System.out.println("Disc is not found.");
+		}
+	}
+	
 	public void print() {
 		this.CartSortByLength();
 		this.CartSortByCost();

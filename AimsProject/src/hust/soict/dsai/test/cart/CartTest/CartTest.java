@@ -22,6 +22,7 @@ public class CartTest {
 		cart.CartSortByCost();
 		cart.CartSortByTitle();
 		cart.CartSortByLength();
+		cart.SearchByTitle("KiNG");
 	}
 
 }
