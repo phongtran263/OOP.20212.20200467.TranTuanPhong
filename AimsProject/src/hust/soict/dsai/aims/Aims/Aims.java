@@ -15,16 +15,19 @@ public class Aims {
 		
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
 		cart.addDigitalVideoDisc(dvd1);
+		store.addDVD(dvd1);
 		
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
 		cart.addDigitalVideoDisc(dvd2);
+		store.addDVD(dvd2);
 		
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
-		cart.addDigitalVideoDisc(dvd3);
+		store.addDVD(dvd3);
 		
 		while(true) {
 			showMenu();
 			int optionShowMenu = scanner.nextInt();
+			scanner.nextLine();
 			if(optionShowMenu == 1) {
 				while(true) {
 					storeMenu();
@@ -49,7 +52,7 @@ public class Aims {
 						if(dvd!=null) {
 							System.out.println("Do you want to add this disc to cart?(y/n)");
 							String answer = scanner.nextLine();
-							if(answer == "y") {
+							if(answer.equals("y")) {
 								cart.addDigitalVideoDisc(dvd);
 							}
 						}

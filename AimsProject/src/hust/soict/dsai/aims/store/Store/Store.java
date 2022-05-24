@@ -14,7 +14,7 @@ public class Store {
 		else {
 			int b = 0;
 			for(int i = 0; i < qtyOrdered; i++) {
-				if(itemsInStore[i].getTitle() == disc.getTitle()) {
+				if(itemsInStore[i].getTitle().equals(disc.getTitle())) {
 					b = 1;
 				}
 			}
@@ -54,7 +54,7 @@ public class Store {
 		
 		else {
 			for(int i = 0; i < qtyOrdered; i++) {
-				if(itemsInStore[i].getTitle() == disc.getTitle()) {
+				if(itemsInStore[i].getTitle().equals(disc.getTitle())) {
 					k = i;
 				}
 			}
@@ -88,6 +88,7 @@ public class Store {
 		
 		if(found == 1) {
 			System.out.println("Found disc: " + result.toString());
+			return result;
 		}
 		
 		else if(found == 0) {

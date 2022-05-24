@@ -16,7 +16,7 @@ public class Cart {
 		else {
 			int b = 0;
 			for(int i = 0; i < qtyOrdered; i++) {
-				if(itemOrdered[i].getTitle() == disc.getTitle()) {
+				if(itemOrdered[i].getTitle().equals(disc.getTitle())) {
 					b = 1;
 				}
 			}
@@ -71,7 +71,7 @@ public class Cart {
 		
 		else {
 			for(int i = 0; i < qtyOrdered; i++) {
-				if(itemOrdered[i].getTitle() == disc.getTitle()) {
+				if(itemOrdered[i].getTitle().equals(disc.getTitle())) {
 					k = i;
 				}
 			}
