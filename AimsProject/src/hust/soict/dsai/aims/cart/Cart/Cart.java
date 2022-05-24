@@ -179,7 +179,7 @@ public class Cart {
 		return result;
 	}
 	
-	public void SearchByTitle(String title) {
+	public DigitalVideoDisc[] SearchByTitle(String title) {
 		int found = 0;
 		DigitalVideoDisc[] result = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 		int num = 0;
@@ -199,11 +199,14 @@ public class Cart {
 				fresult[i] = result[i];
 				System.out.println("Found disc: " + fresult[i].toString());
 			}
+			return fresult;
 		}
 		
 		else if(found == 0) {
 			System.out.println("Disc is not found.");
 		}
+		
+		return null;
 	}
 	
 	public void print() {

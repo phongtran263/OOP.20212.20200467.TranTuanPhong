@@ -123,7 +123,7 @@ public class Aims {
 					else if(option == 2) {
 						System.out.println("enter title: ");
 						String title = scanner.nextLine();
-						cart.SearchByTitle(title);
+						DigitalVideoDisc[] result = cart.SearchByTitle(title);
 					}
 					else if(option == 0) {
 						cartMenu();

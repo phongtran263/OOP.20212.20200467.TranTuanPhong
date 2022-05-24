@@ -2,12 +2,12 @@ package hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
 
 public class Store {
-	public static final int MAX_NUMBERS_ORDERED = 999;
-	private DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+	public static final int MAX_NUMBERS_STORED = 999;
+	private DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[MAX_NUMBERS_STORED];
 	private int qtyOrdered = 0;
 
 	public void addDVD(DigitalVideoDisc disc) {
-		if(qtyOrdered == MAX_NUMBERS_ORDERED) {
+		if(qtyOrdered == MAX_NUMBERS_STORED) {
 			System.out.println("The store is almost full");
 		}
 		
@@ -36,7 +36,7 @@ public class Store {
 	}
 	
 	public int addDVD(DigitalVideoDisc[] dvdList) {
-		int MaxNumSlotsLeft = MAX_NUMBERS_ORDERED - qtyOrdered;
+		int MaxNumSlotsLeft = MAX_NUMBERS_STORED - qtyOrdered;
 		int prevQty = qtyOrdered;
 		
 		for(int i = 0; i < Math.min(MaxNumSlotsLeft, dvdList.length); i++) {
@@ -80,7 +80,7 @@ public class Store {
 
 		for(int i = 0; i < qtyOrdered; i++) {
 			DigitalVideoDisc dvd = itemsInStore[i];
-			if(dvd.isMatch(title)) {
+			if(title.equals(dvd.getTitle())) {
 				found = 1;
 				result = dvd;
 			}
