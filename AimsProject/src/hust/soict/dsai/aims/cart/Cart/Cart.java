@@ -110,7 +110,7 @@ public class Cart {
 		return cost;		
 	}
 	
-	public void CartSortByCost() {
+	public void CartSortByCost(int show) {
 		DigitalVideoDisc[] result = new DigitalVideoDisc[qtyOrdered];
 		for(int i = 0; i < qtyOrdered; i++) {
 			result[i] = itemOrdered[i];
@@ -119,28 +119,32 @@ public class Cart {
 		for(int i = 0; i < qtyOrdered; i++) {
 			itemOrdered[i] = result[i];
 		}
-		System.out.println("sort by cost: ");
-		for (int i = 0; i < result.length; i++) {
-			System.out.println(result[i].toString());
+		if(show == 1) {
+			System.out.println("sort by cost: ");
+			for (int i = 0; i < result.length; i++) {
+				System.out.println(result[i].toString());
+			}
 		}
 	}
 	
-	public void CartSortByTitle() {
+	public void CartSortByTitle(int show) {
 		DigitalVideoDisc[] result = new DigitalVideoDisc[qtyOrdered];
 		for(int i = 0; i < qtyOrdered; i++) {
 			result[i] = itemOrdered[i];
 		}
-		result = DVDUtils.sortByCost(result);
+		result = DVDUtils.sortByTitle(result);
 		for(int i = 0; i < qtyOrdered; i++) {
 			itemOrdered[i] = result[i];
 		}
-		System.out.println("sort by title: ");
-		for (int i = 0; i < result.length; i++) {
-			System.out.println(result[i].toString());
+		if(show == 1) {
+			System.out.println("sort by cost: ");
+			for (int i = 0; i < result.length; i++) {
+				System.out.println(result[i].toString());
+			}
 		}
 	}
 	
-	public void CartSortByLength() {
+	public void CartSortByLength(int show) {
 		DigitalVideoDisc[] result = new DigitalVideoDisc[qtyOrdered];
 		for(int i = 0; i < qtyOrdered; i++) {
 			result[i] = itemOrdered[i];
@@ -149,9 +153,11 @@ public class Cart {
 		for(int i = 0; i < qtyOrdered; i++) {
 			itemOrdered[i] = result[i];
 		}
-		System.out.println("sort by title: ");
-		for (int i = 0; i < result.length; i++) {
-			System.out.println(result[i].toString());
+		if(show == 1) {
+			System.out.println("sort by cost: ");
+			for (int i = 0; i < result.length; i++) {
+				System.out.println(result[i].toString());
+			}
 		}
 	}
 	
@@ -210,9 +216,9 @@ public class Cart {
 	}
 	
 	public void print() {
-		this.CartSortByLength();
-		this.CartSortByCost();
-		this.CartSortByTitle();
+		this.CartSortByLength(0);
+		this.CartSortByCost(0);
+		this.CartSortByTitle(0);
 		System.out.println("***********************CART***********************");
 		System.out.println("Ordered Items:");
 		for(int i = 0; i < qtyOrdered; i++) {
@@ -225,15 +231,15 @@ public class Cart {
 	
 	public void print(String type) {
 		if(type == "title") {
-			this.CartSortByLength();
-			this.CartSortByCost();
-			this.CartSortByTitle();
+			this.CartSortByLength(0);
+			this.CartSortByCost(0);
+			this.CartSortByTitle(0);
 		}
 		
 		else if(type == "cost") {
-			this.CartSortByLength();
-			this.CartSortByTitle();
-			this.CartSortByCost();
+			this.CartSortByLength(0);
+			this.CartSortByTitle(0);
+			this.CartSortByCost(0);
 		}
 		System.out.println("***********************CART***********************");
 		System.out.println("Ordered Items:");

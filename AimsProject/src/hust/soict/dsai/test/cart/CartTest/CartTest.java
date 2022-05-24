@@ -19,9 +19,9 @@ public class CartTest {
 
 		cart.print();
 		cart.Search(4);
-		cart.CartSortByCost();
-		cart.CartSortByTitle();
-		cart.CartSortByLength();
+		cart.CartSortByCost(1);
+		cart.CartSortByTitle(1);
+		cart.CartSortByLength(1);
 		cart.SearchByTitle("KiNG");
 	}
 

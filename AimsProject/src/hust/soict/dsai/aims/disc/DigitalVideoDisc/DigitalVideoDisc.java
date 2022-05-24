@@ -21,7 +21,7 @@ public class DigitalVideoDisc {
 		this.id = nbDigitalVideoDiscs;
 	}
 	
-	public DigitalVideoDisc(String director, String category, String title, float cost) {
+	public DigitalVideoDisc(String title, String category, String director, float cost) {
 		super();
 		this.director = director;
 		this.category = category;
