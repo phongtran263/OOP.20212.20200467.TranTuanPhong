@@ -43,6 +43,10 @@ public class DigitalVideoDisc {
 		this.id = nbDigitalVideoDiscs;
 	}
 	
+	public String toString() {
+		return "DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " + this.getLength() + ": " + this.getCost() + "$";
+	}
+	
 	private String title;
 	private String category;
 	private String director;
@@ -50,7 +54,7 @@ public class DigitalVideoDisc {
 	private float cost;
 	private LocalDate dateAdded;
 	private static int nbDigitalVideoDiscs = 0;
-	int id = nbDigitalVideoDiscs;
+	private int id = nbDigitalVideoDiscs;
 	
 	public String getTitle() {
 		return this.title;
@@ -94,6 +98,10 @@ public class DigitalVideoDisc {
 
 	public LocalDate getDateAdded() {
 		return this.dateAdded;
+	}
+
+	public int getId() {
+		return id;
 	}
 	
 }

@@ -96,6 +96,84 @@ public class Cart {
 		return cost;		
 	}
 	
+	public void CartSortByCost() {
+		DigitalVideoDisc[] result = new DigitalVideoDisc[qtyOrdered];
+		for(int i = 0; i < qtyOrdered; i++) {
+			result[i] = itemOrdered[i];
+		}
+		result = DVDUtils.sortByCost(result);
+		for(int i = 0; i < qtyOrdered; i++) {
+			itemOrdered[i] = result[i];
+		}
+		System.out.println("sort by cost: ");
+		for (int i = 0; i < result.length; i++) {
+			System.out.println(result[i].toString());
+		}
+	}
 	
+	public void CartSortByTitle() {
+		DigitalVideoDisc[] result = new DigitalVideoDisc[qtyOrdered];
+		for(int i = 0; i < qtyOrdered; i++) {
+			result[i] = itemOrdered[i];
+		}
+		result = DVDUtils.sortByCost(result);
+		for(int i = 0; i < qtyOrdered; i++) {
+			itemOrdered[i] = result[i];
+		}
+		System.out.println("sort by title: ");
+		for (int i = 0; i < result.length; i++) {
+			System.out.println(result[i].toString());
+		}
+	}
+	
+	public void CartSortByLength() {
+		DigitalVideoDisc[] result = new DigitalVideoDisc[qtyOrdered];
+		for(int i = 0; i < qtyOrdered; i++) {
+			result[i] = itemOrdered[i];
+		}
+		result = DVDUtils.sortByLength(result);
+		for(int i = 0; i < qtyOrdered; i++) {
+			itemOrdered[i] = result[i];
+		}
+		System.out.println("sort by title: ");
+		for (int i = 0; i < result.length; i++) {
+			System.out.println(result[i].toString());
+		}
+	}
+	
+	public void Search(int id) {
+		int found = 0;
+		DigitalVideoDisc result = null;
+		
+		for(int i = 0; i < qtyOrdered; i++) {
+			DigitalVideoDisc dvd = itemOrdered[i];
+			if(dvd.getId() == id) {
+				found = 1;
+				result = dvd;
+			}
+		}
+		
+		if(found == 1) {
+			System.out.println("Found disc: " + result.toString());
+		}
+		
+		else if(found == 0) {
+			System.out.println("Disc is not found.");
+		}
+	}
+	
+	public void print() {
+		this.CartSortByLength();
+		this.CartSortByCost();
+		this.CartSortByTitle();
+		System.out.println("***********************CART***********************");
+		System.out.println("Ordered Items:");
+		for(int i = 0; i < qtyOrdered; i++) {
+			System.out.print((i+1) + ". ");
+			System.out.println(itemOrdered[i].toString());
+		}
+		System.out.println("Total cost: " + this.totalCost());
+		System.out.println("***************************************************");
+	}
 	
 }
