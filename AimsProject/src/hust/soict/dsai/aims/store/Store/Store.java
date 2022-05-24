@@ -46,7 +46,7 @@ public class Store {
 		return qtyOrdered - prevQty;
 	}
 	
-	public int removeDigitalVideoDisc(DigitalVideoDisc disc) {
+	public int removeDVD(DigitalVideoDisc disc) {
 		int k = -1;
 		if(qtyOrdered == 0) {
 			System.out.println("The store has already empty");
@@ -72,5 +72,28 @@ public class Store {
 			}
 		}
 		return 0;
+	}
+	
+	public DigitalVideoDisc SearchByTitle(String title) {
+		int found = 0;
+		DigitalVideoDisc result = null;
+
+		for(int i = 0; i < qtyOrdered; i++) {
+			DigitalVideoDisc dvd = itemsInStore[i];
+			if(dvd.isMatch(title)) {
+				found = 1;
+				result = dvd;
+			}
+		}
+		
+		if(found == 1) {
+			System.out.println("Found disc: " + result.toString());
+		}
+		
+		else if(found == 0) {
+			System.out.println("Disc is not found.");
+		}
+		
+		return result;
 	}
 }

@@ -91,6 +91,16 @@ public class Cart {
 		return 0;
 	}
 	
+	public int removeDigitalVideoDisc(int index) {
+		if((index > 0) && (index <= qtyOrdered)) {
+			this.removeDigitalVideoDisc(itemOrdered[index - 1]);
+		}
+		else {
+			System.out.println("Index is not right.");
+		}
+		return 0;
+	}
+	
 	public float totalCost() {
 		float cost = 0;
 		for(int i = 0; i < qtyOrdered; i++) {
@@ -145,7 +155,7 @@ public class Cart {
 		}
 	}
 	
-	public void Search(int id) {
+	public DigitalVideoDisc Search(int id) {
 		int found = 0;
 		DigitalVideoDisc result = null;
 		
@@ -159,27 +169,36 @@ public class Cart {
 		
 		if(found == 1) {
 			System.out.println("Found disc: " + result.toString());
+			return result;
 		}
 		
 		else if(found == 0) {
 			System.out.println("Disc is not found.");
 		}
+		
+		return result;
 	}
 	
 	public void SearchByTitle(String title) {
 		int found = 0;
-		DigitalVideoDisc result = null;
-
+		DigitalVideoDisc[] result = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+		int num = 0;
+		
 		for(int i = 0; i < qtyOrdered; i++) {
 			DigitalVideoDisc dvd = itemOrdered[i];
 			if(dvd.isMatch(title)) {
 				found = 1;
-				result = dvd;
+				result[num] = dvd;
+				num++;
 			}
 		}
 		
 		if(found == 1) {
-			System.out.println("Found disc: " + result.toString());
+			DigitalVideoDisc[] fresult = new DigitalVideoDisc[num];
+			for(int i = 0; i < num; i++) {
+				fresult[i] = result[i];
+				System.out.println("Found disc: " + fresult[i].toString());
+			}
 		}
 		
 		else if(found == 0) {
@@ -199,6 +218,35 @@ public class Cart {
 		}
 		System.out.println("Total cost: " + this.totalCost());
 		System.out.println("***************************************************");
+	}
+	
+	public void print(String type) {
+		if(type == "title") {
+			this.CartSortByLength();
+			this.CartSortByCost();
+			this.CartSortByTitle();
+		}
+		
+		else if(type == "cost") {
+			this.CartSortByLength();
+			this.CartSortByTitle();
+			this.CartSortByCost();
+		}
+		System.out.println("***********************CART***********************");
+		System.out.println("Ordered Items:");
+		for(int i = 0; i < qtyOrdered; i++) {
+			System.out.print((i+1) + ". ");
+			System.out.println(itemOrdered[i].toString());
+		}
+		System.out.println("Total cost: " + this.totalCost());
+		System.out.println("***************************************************");
+	}
+	
+	public void Empty() {
+		for(int i = qtyOrdered - 1; i >= 0; i--) {
+			this.removeDigitalVideoDisc(itemOrdered[i]);
+		}
+		System.out.println("The cart is empty now!");
 	}
 	
 }
