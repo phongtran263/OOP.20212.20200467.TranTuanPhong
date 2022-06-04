@@ -1,61 +1,48 @@
-package hust.soict.dsai.aims.disc.DigitalVideoDisc;
+package hust.soict.dsai.aims.media;
 import java.time.LocalDate;
 
-public class DigitalVideoDisc {
+public class DigitalVideoDisc extends Media{
 	
 	public DigitalVideoDisc(String title) {
 		super();
-		this.title = title;
+		this.setTitle(title);
 		this.dateAdded = LocalDate.now();
-		nbDigitalVideoDiscs++;
-		this.id = nbDigitalVideoDiscs;
 	}
 	
 	public DigitalVideoDisc(String title, String category, float cost) {
 		super();
-		this.category = category;
-		this.title = title;
-		this.cost = cost;
+		this.setCategory(category);
+		this.setTitle(title);
+		this.setCost(cost);
 		this.dateAdded = LocalDate.now();
-		nbDigitalVideoDiscs++;
-		this.id = nbDigitalVideoDiscs;
 	}
 	
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
 		super();
-		this.director = director;
-		this.category = category;
-		this.title = title;
-		this.cost = cost;
+		this.setDirector(director);
+		this.setCategory(category);
+		this.setTitle(title);
+		this.setCost(cost);
 		this.dateAdded = LocalDate.now();
-		nbDigitalVideoDiscs++;
-		this.id = nbDigitalVideoDiscs;
 	}
 	
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super();
-		this.director = director;
-		this.category = category;
-		this.title = title;
-		this.length = length;		
-		this.cost = cost;
+		this.setDirector(director);
+		this.setCategory(category);
+		this.setTitle(title);
+		this.setLength(length);
+		this.setCost(cost);
 		this.dateAdded = LocalDate.now();
-		nbDigitalVideoDiscs++;
-		this.id = nbDigitalVideoDiscs;
 	}
 	
 	public String toString() {
 		return "DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " + this.getLength() + ": " + this.getCost() + "$";
 	}
 	
-	private String title;
-	private String category;
 	private String director;
 	private int length;
-	private float cost;
 	private LocalDate dateAdded;
-	private static int nbDigitalVideoDiscs = 0;
-	private int id = nbDigitalVideoDiscs;
 	
 	public boolean isMatch(String title) {
 		String[] myTitle = this.getTitle().split(" ");
@@ -74,14 +61,6 @@ public class DigitalVideoDisc {
 		return false;
 	}
 	
-	public String getTitle() {
-		return this.title;
-	}
-	
-	public String getCategory() {
-		return this.category;
-	}
-	
 	public String getDirector() {
 		return this.director;
 	}
@@ -90,18 +69,6 @@ public class DigitalVideoDisc {
 		return this.length;
 	}
 	
-	public float getCost() {
-		return this.cost;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
 	public void setDirector(String director) {
 		this.director = director;
 	}
@@ -110,16 +77,8 @@ public class DigitalVideoDisc {
 		this.length = length;
 	}
 
-	public void setCost(float cost) {
-		this.cost = cost;
-	}
-
 	public LocalDate getDateAdded() {
 		return this.dateAdded;
-	}
-
-	public int getId() {
-		return id;
 	}
 	
 }
