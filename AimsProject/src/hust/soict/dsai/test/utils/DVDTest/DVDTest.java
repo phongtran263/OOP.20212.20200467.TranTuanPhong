@@ -1,5 +1,5 @@
 package hust.soict.dsai.test.utils.DVDTest;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.utils.DVDUtils.DVDUtils;
 
 public class DVDTest {
