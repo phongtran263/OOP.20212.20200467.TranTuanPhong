@@ -1,133 +1,86 @@
 package hust.soict.dsai.aims.utils.DVDUtils;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
+import java.util.ArrayList;
+
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
 
 public class DVDUtils {
 
-	public static int compareByCost(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-		int result = 0;
-		
-		if(dvd1.getCost() > dvd2.getCost()) {
-			result = 1;
+	public static boolean compareByCost(Media media1, Media media2) {		
+		if(media1.getCost() >= media2.getCost()) {
+			return true;
 		}		
-		else if(dvd1.getCost() < dvd2.getCost()) {
-			result = -1;
-			
-		}		
-		else {
-			result = 0;
-		}
 		
-		return result;
+		return false;
 	}
 	
-	public static int compareByTitle(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-		int result = 0;
-		int l1 = dvd1.getTitle().length();
-		int l2 = dvd2.getTitle().length();
+	public static boolean compareByTitle(Media media1, Media media2) {
+		int l1 = media1.getTitle().length();
+		int l2 = media2.getTitle().length();
 		
 		int lenMin = Math.min(l1, l2);
 		for(int i = 0; i < lenMin; i++) {
-			if(dvd1.getTitle().charAt(i) != dvd2.getTitle().charAt(i)) {
-				result = (int)dvd1.getTitle().charAt(i) - (int)dvd2.getTitle().charAt(i);
-				result = result/(Math.abs(result));
-				return result;
+			if((int)media1.getTitle().toLowerCase().charAt(i) > (int)media2.getTitle().toLowerCase().charAt(i)) {
+				return true;
+			}
+			else if((int)media1.getTitle().toLowerCase().charAt(i) < (int)media2.getTitle().toLowerCase().charAt(i)) {
+				return false;
 			}
 		}
 		
-		if(l1 > l2) {
-			result = 1;
-			return result;
+		if(l1 >= l2) {
+			return true;
 		}
 
-		if(l1 < l2) {
-			result = -1;
-			return result;
-		}
-
-		return result;
+		return false;
 	}
-	
-	public static int compareByLength(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-		int result = 0;
-		int l1 = dvd1.getLength();
-		int l2 = dvd2.getLength();
 		
-		if(l1 > l2) {
-			result = 1;
-		}
-		else if(l1 < l2) {
-			result = -1;
-		}
-		return result;
-	}
-	
-	public static DigitalVideoDisc[] sortByCost(DigitalVideoDisc[] dvdList) {
-		DigitalVideoDisc[] result = dvdList.clone();
-
-		QuickSortdvdList(result, 0, result.length - 1, "cost", -1);
+	public static ArrayList<Media> sortByCost(ArrayList<Media> mediaList) {
+		QuickSortdvdList(mediaList, 0, mediaList.size() - 1, "cost", false);
 		
-		return result;
+		return mediaList;
 	}
 	
-	public static DigitalVideoDisc[] sortByTitle(DigitalVideoDisc[] dvdList) {
-		DigitalVideoDisc[] result = dvdList.clone();
-
-		QuickSortdvdList(result, 0, result.length - 1, "title", 1);
+	public static ArrayList<Media> sortByTitle(ArrayList<Media> mediaList) {
+		QuickSortdvdList(mediaList, 0, mediaList.size() - 1, "title", true);
 		
-		return result;
+		return mediaList;
 	}
-	
-	public static DigitalVideoDisc[] sortByLength(DigitalVideoDisc[] dvdList) {
-		DigitalVideoDisc[] result = dvdList.clone();
 		
-		QuickSortdvdList(result, 0, result.length - 1, "length", -1);
-
-		return result;
-	}
-	
-	private static void QuickSortdvdList(DigitalVideoDisc[] dvdList, int start, int end, String type, int asc) {
+	private static void QuickSortdvdList(ArrayList<Media> mediaList, int start, int end, String type, boolean asc) {
 		if(start < end) {
-			int partition = PartitiondvdList(dvdList, start, end, type, asc);
-			QuickSortdvdList(dvdList, start, partition - 1, type, asc);
-			QuickSortdvdList(dvdList, partition + 1, end, type, asc);
+			int partition = PartitiondvdList(mediaList, start, end, type, asc);
+			QuickSortdvdList(mediaList, start, partition - 1, type, asc);
+			QuickSortdvdList(mediaList, partition + 1, end, type, asc);
 		}
 	}
 	
-	private static int PartitiondvdList(DigitalVideoDisc[] dvdList, int start, int end, String type, int asc) {
-		DigitalVideoDisc pivot = dvdList[end];
+	private static int PartitiondvdList(ArrayList<Media> mediaList, int start, int end, String type, boolean asc) {
+		Media pivot = mediaList.get(end);
 		int i = start - 1;
 
 		for(int j = start; j < end; j++) {
-			if(type == "cost") {
-				if(asc*compareByCost(dvdList[j], pivot) <= 0) {
+			if(type.equals("cost")) {
+				if(asc != compareByCost(mediaList.get(j), pivot)) {
 					i++;
-					DigitalVideoDisc tmp = dvdList[i];
-					dvdList[i] = dvdList[j];
-					dvdList[j] = tmp;
+					Media tmp = mediaList.get(i);
+					mediaList.set(i, mediaList.get(j));
+					mediaList.set(j, tmp);
 				}
 			}
-			else if(type == "title") {
-				if(asc*compareByTitle(dvdList[j], pivot) <= 0) {
+			else if(type.equals("title")) {
+				if(asc != compareByTitle(mediaList.get(j), pivot)) {
 					i++;
-					DigitalVideoDisc tmp = dvdList[i];
-					dvdList[i] = dvdList[j];
-					dvdList[j] = tmp;
+					Media tmp = mediaList.get(i);
+					mediaList.set(i, mediaList.get(j));
+					mediaList.set(j, tmp);
 				}
-			}
-			else if(type == "length") {
-				if(asc*compareByLength(dvdList[j], pivot) <= 0) {
-					i++;
-					DigitalVideoDisc tmp = dvdList[i];
-					dvdList[i] = dvdList[j];
-					dvdList[j] = tmp;
-				}
-
 			}
 		}
 		
-		DigitalVideoDisc tmp = dvdList[i+1];
-		dvdList[i+1] = dvdList[end];
-		dvdList[end] = tmp;
+		Media tmp = mediaList.get(i+1);
+		mediaList.set(i+1, mediaList.get(end));
+		mediaList.set(end, tmp);
 		
 		return i+1;
 	}

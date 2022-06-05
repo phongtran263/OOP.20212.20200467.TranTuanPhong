@@ -1,8 +1,10 @@
 package hust.soict.dsai.aims.Aims;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import hust.soict.dsai.aims.cart.Cart.Cart;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store.Store;
 
 public class Aims {
@@ -14,11 +16,11 @@ public class Aims {
 		Cart cart = new Cart();
 		
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-		cart.addDigitalVideoDisc(dvd1);
+		cart.addMedia(dvd1);
 		store.addDVD(dvd1);
 		
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-		cart.addDigitalVideoDisc(dvd2);
+		cart.addMedia(dvd2);
 		store.addDVD(dvd2);
 		
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
@@ -53,7 +55,7 @@ public class Aims {
 							System.out.println("Do you want to add this disc to cart?(y/n)");
 							String answer = scanner.nextLine();
 							if(answer.equals("y")) {
-								cart.addDigitalVideoDisc(dvd);
+								cart.addMedia(dvd);
 							}
 						}
 					}
@@ -75,7 +77,7 @@ public class Aims {
 							}
 						}
 						if(dvd!=null) {
-							cart.addDigitalVideoDisc(dvd);
+							cart.addMedia(dvd);
 						}
 					}
 					
@@ -168,7 +170,7 @@ public class Aims {
 							else if(option == 2) {
 								System.out.println("enter title: ");
 								String title = scanner.nextLine();
-								DigitalVideoDisc[] result = cart.SearchByTitle(title);
+								ArrayList<Media> result = cart.SearchByTitle(title);
 							}
 							else if(option == 0) {break;}
 						}
@@ -202,7 +204,7 @@ public class Aims {
 							System.out.println("Enter id of DVD you want to remove:");
 							int index = scanner.nextInt();
 							scanner.nextLine();
-							int b = cart.removeDigitalVideoDisc(index);
+							int b = cart.removeMedia(index);
 							if(b == 1){
 								p = 1;
 							}
