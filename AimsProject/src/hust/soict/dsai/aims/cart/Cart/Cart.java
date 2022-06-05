@@ -88,7 +88,11 @@ public class Cart {
 			cost+=media.getCost();
 		}
 		
-		return cost;		
+		if(this.itemsOrdered.size() >= 5) {
+			cost-=this.getALuckyItem().getCost();
+		}
+		
+		return cost;
 	}
 	
 	public void CartSortByCost(boolean show) {
@@ -184,6 +188,15 @@ public class Cart {
 			this.removeMedia(this.itemsOrdered.get(i));
 		}
 		System.out.println("The cart is empty now!");
+	}
+	
+	public Media getALuckyItem() {
+		if(this.itemsOrdered.size() >= 5) {
+			int luckyIndex = (int)(Math.random()*this.itemsOrdered.size());
+			return this.itemsOrdered.get(luckyIndex);
+		}
+		
+		return null;
 	}
 	
 }
