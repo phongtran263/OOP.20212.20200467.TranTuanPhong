@@ -8,7 +8,7 @@ public class Book extends Media{
 	private List<String> authors = new ArrayList<String>();
 	
 	public Book() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 	
 	public void addAuthor(String authorName) {

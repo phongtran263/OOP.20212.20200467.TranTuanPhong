@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.media;
 import java.time.LocalDate;
 
-public class DigitalVideoDisc extends Media{
+public class DigitalVideoDisc extends Disc{
 	
 	public DigitalVideoDisc(String title) {
 		super();
