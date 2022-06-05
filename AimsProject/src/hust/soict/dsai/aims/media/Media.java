@@ -13,6 +13,21 @@ public class Media {
 		this.id = nbMedia;
 	}
 
+	public boolean isMatch(String title2) {
+		String[] titleSplit = this.getTitle().split(" ");
+		String[] title2Split = title2.split(" ");
+		
+		for(String s: titleSplit) {
+			for(String s2: title2Split) {
+				if(s.equals(s2)) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+
 	public String getTitle() {
 		return title;
 	}
