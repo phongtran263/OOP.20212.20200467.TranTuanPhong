@@ -1,100 +1,78 @@
 package hust.soict.dsai.aims.store.Store;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
+import java.util.ArrayList;
+
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
 
 public class Store {
-	public static final int MAX_NUMBERS_STORED = 999;
-	private DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[MAX_NUMBERS_STORED];
-	private int qtyOrdered = 0;
+	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
-	public void addDVD(DigitalVideoDisc disc) {
-		if(qtyOrdered == MAX_NUMBERS_STORED) {
-			System.out.println("The store is almost full");
+	public void addMedia(Media media) {
+		boolean existStatus = false;
+		
+		for(Media m: this.itemsInStore) {
+			if(m.getTitle().equals(media.getTitle())) {
+				existStatus = true;
+				break;
+			}
+		}
+		
+		if(existStatus) {
+			System.out.println("This media has been already in the cart.");
 		}
 		
 		else {
-			int b = 0;
-			for(int i = 0; i < qtyOrdered; i++) {
-				if(itemsInStore[i].getTitle().equals(disc.getTitle())) {
-					b = 1;
-				}
-			}
-			
-			if(b == 0) {
-				itemsInStore[qtyOrdered] = disc;
-				qtyOrdered++;
-				System.out.println("The disc has been added");
-			}
-			else {
-				System.out.println("The disc has already in the store");
-			}
+			this.itemsInStore.add(media);
+			System.out.println("This media has been added.");
 		}
 	}
 	
-	public void addDVD(DigitalVideoDisc disc1, DigitalVideoDisc disc2) {
-		addDVD(disc1);
-		addDVD(disc2);
+	public void addMedia(Media media1, Media media2) {
+		this.addMedia(media1);
+		this.addMedia(media2);
 	}
 	
-	public int addDVD(DigitalVideoDisc[] dvdList) {
-		int MaxNumSlotsLeft = MAX_NUMBERS_STORED - qtyOrdered;
-		int prevQty = qtyOrdered;
-		
-		for(int i = 0; i < Math.min(MaxNumSlotsLeft, dvdList.length); i++) {
-			addDVD(dvdList[i]);
+	public void addMedia(Media[] mediaList) {		
+		for(int i = 0; i < mediaList.length; i++) {
+			this.addMedia(mediaList[i]);
 		}
 		
-		return qtyOrdered - prevQty;
+		System.out.println("All media have been added.");
 	}
 	
-	public int removeDVD(DigitalVideoDisc disc) {
-		int k = -1;
-		if(qtyOrdered == 0) {
-			System.out.println("The store has already empty");
-		}
-		
-		else {
-			for(int i = 0; i < qtyOrdered; i++) {
-				if(itemsInStore[i].getTitle().equals(disc.getTitle())) {
-					k = i;
-				}
-			}
-			if(k == -1) {
-				System.out.println("This disc is not in store");
-			}
-			else {
-				for(int i = k; i < qtyOrdered - 1; i++) {
-					itemsInStore[i] = itemsInStore[i+1];
-				}
-				itemsInStore[qtyOrdered - 1] = null;
-				qtyOrdered--;
-				System.out.println("This disc has been removed");
+	public int removeMedia(Media media) {
+		for(int i = 0; i < this.itemsInStore.size(); i++) {
+			if(this.itemsInStore.get(i).getTitle().equals(media.getTitle())) {
+				System.out.println("This media has been removed.");
 				return 1;
 			}
 		}
+		
+		System.out.println("This media is not exist.");
 		return 0;
 	}
 	
-	public DigitalVideoDisc SearchByTitle(String title) {
-		int found = 0;
-		DigitalVideoDisc result = null;
+	public int removeMedia(int index) {
+		if((0 <= index) && (index< this.itemsInStore.size())) {
+			this.itemsInStore.remove(index);
+			System.out.println("The media at this index has been removed.");
+			return 1;
+		}
+	
+		System.out.println("The index is out of range!");
+		return 0;
+	}
+	
+	public Media SearchByTitle(String title) {
 
-		for(int i = 0; i < qtyOrdered; i++) {
-			DigitalVideoDisc dvd = itemsInStore[i];
-			if(title.equals(dvd.getTitle())) {
-				found = 1;
-				result = dvd;
+		for(int i = 0; i < this.itemsInStore.size(); i++) {
+			Media media = this.itemsInStore.get(i);
+			if(title.equals(media.getTitle())) {
+				System.out.println("Found media: " + media.toString());
 			}
 		}
 		
-		if(found == 1) {
-			System.out.println("Found disc: " + result.toString());
-			return result;
-		}
-		
-		else if(found == 0) {
-			System.out.println("Disc is not found.");
-		}
-		
-		return result;
+		System.out.println("Disc is not found.");		
+		return null;
 	}
 }
