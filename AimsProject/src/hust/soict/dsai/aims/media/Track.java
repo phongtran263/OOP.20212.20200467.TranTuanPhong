@@ -22,4 +22,7 @@ public class Track implements Playable{
 		System.out.println("DVD length: " + this.getLength());
 	}
 
+	public String toString() {
+		return "Track - " + this.getTitle() + " - " + this.getLength();
+	}
 }

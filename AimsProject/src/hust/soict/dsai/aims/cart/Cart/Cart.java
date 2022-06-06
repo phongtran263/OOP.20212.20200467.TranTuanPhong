@@ -9,6 +9,8 @@ public class Cart {
 	
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	private boolean ChangeStatus = true;
+	private Media luckyOne = new Media(false); // create null media
 	
 	public void addMedia(Media media) {
 		if(this.itemsOrdered.size() >= MAX_NUMBERS_ORDERED) {
@@ -32,6 +34,7 @@ public class Cart {
 			else {
 				this.itemsOrdered.add(media);
 				System.out.println("This media has been added.");
+				this.ChangeStatus = true;
 			}
 		}
 	}
@@ -63,6 +66,7 @@ public class Cart {
 		for(int i = 0; i < this.itemsOrdered.size(); i++) {
 			if(this.itemsOrdered.get(i).getTitle().equals(media.getTitle())) {
 				System.out.println("This media has been removed.");
+				this.ChangeStatus = true;
 				return 1;
 			}
 		}
@@ -75,6 +79,7 @@ public class Cart {
 		if((0 <= index) && (index< this.itemsOrdered.size())) {
 			this.itemsOrdered.remove(index);
 			System.out.println("The media at this index has been removed.");
+			this.ChangeStatus = true;
 			return 1;
 		}
 	
@@ -82,13 +87,13 @@ public class Cart {
 		return 0;
 	}
 	
-	public float totalCost() {
+	public float totalCost(boolean forOrder) {
 		float cost = 0;
 		for(Media media: this.itemsOrdered) {
 			cost+=media.getCost();
 		}
 		
-		if(this.itemsOrdered.size() >= 5) {
+		if(this.itemsOrdered.size() >= 5 && forOrder) {
 			cost-=this.getALuckyItem().getCost();
 		}
 		
@@ -107,7 +112,7 @@ public class Cart {
 	}
 	
 	public void CartSortByTitle(boolean show) {
-		this.itemsOrdered = DVDUtils.sortByCost(this.itemsOrdered);
+		this.itemsOrdered = DVDUtils.sortByTitle(this.itemsOrdered);
 
 		if(show) {
 			System.out.println("sort by title: ");
@@ -150,16 +155,19 @@ public class Cart {
 		return result;
 	}
 	
-	public void print() {
-		this.CartSortByCost(false);
-		this.CartSortByTitle(false);
+	public void print(boolean forOrder) {
 		System.out.println("***********************CART***********************");
 		System.out.println("Ordered Items:");
 		for(int i = 0; i < this.itemsOrdered.size(); i++) {
 			System.out.print((i+1) + ". ");
 			System.out.println(this.itemsOrdered.get(i).toString());
 		}
-		System.out.println("Total cost: " + this.totalCost());
+		this.luckyOne = this.getALuckyItem();
+		if(this.luckyOne != null && forOrder && this.itemsOrdered.size() >= 5) {
+			System.out.println("Congratulation!!! A lucky item is found in your cart. You can get it for free.");
+			System.out.println(this.luckyOne.toString());
+		}
+		System.out.println("Total cost: " + this.totalCost(forOrder));
 		System.out.println("***************************************************");
 	}
 	
@@ -179,7 +187,7 @@ public class Cart {
 			System.out.print((i+1) + ". ");
 			System.out.println(this.itemsOrdered.get(i).toString());
 		}
-		System.out.println("Total cost: " + this.totalCost());
+		System.out.println("Total cost: " + this.totalCost(false));
 		System.out.println("***************************************************");
 	}
 	
@@ -191,12 +199,14 @@ public class Cart {
 	}
 	
 	public Media getALuckyItem() {
-		if(this.itemsOrdered.size() >= 5) {
+		if(this.itemsOrdered.size() >= 5 && this.ChangeStatus) {
 			int luckyIndex = (int)(Math.random()*this.itemsOrdered.size());
-			return this.itemsOrdered.get(luckyIndex);
+			this.ChangeStatus = false;
+			this.luckyOne = this.itemsOrdered.get(luckyIndex);
+			return this.luckyOne;
 		}
 		
-		return null;
+		return this.luckyOne;
 	}
 	
 }
