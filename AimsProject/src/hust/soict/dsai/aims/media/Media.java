@@ -12,6 +12,16 @@ public class Media {
 		nbMedia++;
 		this.id = nbMedia;
 	}
+	
+	public Media(String title) {
+		nbMedia++;
+		this.id = nbMedia;
+		this.setTitle(title);
+	}
+	
+	public Media(boolean Null) {
+		this.setTitle("Null media");
+	}
 
 	public boolean isMatch(String title2) {
 		String[] titleSplit = this.getTitle().split(" ");
@@ -26,6 +36,14 @@ public class Media {
 		}
 		
 		return false;
+	}
+	
+	public String toString() {
+		if(this.getTitle().equals("Null media")) {
+			return this.getTitle();
+		}
+		
+		return "Media - " + this.getTitle();
 	}
 
 	public String getTitle() {

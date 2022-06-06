@@ -74,4 +74,14 @@ public class CompactDisc extends Disc implements Playable{
 		}
 	}
 
+	public String toString() {
+		String tracksString = "Track - " + this.tracks.get(0).getTitle() + " - " + this.tracks.get(0).getLength();
+		
+		for(int i = 1; i < this.tracks.size(); i++) {
+			tracksString+="\n";
+			tracksString+=("Track - " + this.tracks.get(i).getTitle() + " - " + this.tracks.get(i).getLength());
+		}
+		
+		return "Compact disc - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " + this.getLength() + ": " + this.getCost() + "$" + "\n" + tracksString;
+	}
 }

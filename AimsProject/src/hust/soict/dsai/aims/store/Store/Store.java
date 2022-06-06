@@ -69,6 +69,7 @@ public class Store {
 			Media media = this.itemsInStore.get(i);
 			if(title.equals(media.getTitle())) {
 				System.out.println("Found media: " + media.toString());
+				return media;
 			}
 		}
 		

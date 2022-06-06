@@ -37,8 +37,14 @@ public class Book extends Media{
 		return authors;
 	}
 
-	public void setAuthors(List<String> authors) {
-		this.authors = authors;
+	public String toString() {		
+		String authorsString = this.authors.get(0);
+		
+		for(int i = 1; i < this.authors.size(); i++) {
+			authorsString+=", ";
+			authorsString+=this.authors.get(i);
+		}
+		
+		return "Book - " + this.getTitle() + " - " + this.getCategory() + " - " + authorsString + ": " + this.getCost() + "$";
 	}
-
 }
