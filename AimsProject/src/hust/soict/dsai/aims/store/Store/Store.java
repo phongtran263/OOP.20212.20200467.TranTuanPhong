@@ -1,7 +1,6 @@
 package hust.soict.dsai.aims.store.Store;
 import java.util.ArrayList;
 
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 
 public class Store {
@@ -74,6 +73,6 @@ public class Store {
 		}
 		
 		System.out.println("Disc is not found.");		
-		return null;
+		return new Media(false);
 	}
 }

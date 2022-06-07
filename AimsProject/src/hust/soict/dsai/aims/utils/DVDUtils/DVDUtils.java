@@ -1,7 +1,6 @@
 package hust.soict.dsai.aims.utils.DVDUtils;
 import java.util.ArrayList;
 
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 
 public class DVDUtils {
@@ -36,26 +35,26 @@ public class DVDUtils {
 	}
 		
 	public static ArrayList<Media> sortByCost(ArrayList<Media> mediaList) {
-		QuickSortdvdList(mediaList, 0, mediaList.size() - 1, "cost", false);
+		QuickSortMediaList(mediaList, 0, mediaList.size() - 1, "cost", false);
 		
 		return mediaList;
 	}
 	
 	public static ArrayList<Media> sortByTitle(ArrayList<Media> mediaList) {
-		QuickSortdvdList(mediaList, 0, mediaList.size() - 1, "title", true);
+		QuickSortMediaList(mediaList, 0, mediaList.size() - 1, "title", true);
 		
 		return mediaList;
 	}
 		
-	private static void QuickSortdvdList(ArrayList<Media> mediaList, int start, int end, String type, boolean asc) {
+	private static void QuickSortMediaList(ArrayList<Media> mediaList, int start, int end, String type, boolean asc) {
 		if(start < end) {
-			int partition = PartitiondvdList(mediaList, start, end, type, asc);
-			QuickSortdvdList(mediaList, start, partition - 1, type, asc);
-			QuickSortdvdList(mediaList, partition + 1, end, type, asc);
+			int partition = PartitionMediaList(mediaList, start, end, type, asc);
+			QuickSortMediaList(mediaList, start, partition - 1, type, asc);
+			QuickSortMediaList(mediaList, partition + 1, end, type, asc);
 		}
 	}
 	
-	private static int PartitiondvdList(ArrayList<Media> mediaList, int start, int end, String type, boolean asc) {
+	private static int PartitionMediaList(ArrayList<Media> mediaList, int start, int end, String type, boolean asc) {
 		Media pivot = mediaList.get(end);
 		int i = start - 1;
 
