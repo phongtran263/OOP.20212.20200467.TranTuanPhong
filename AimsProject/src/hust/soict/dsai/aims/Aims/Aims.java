@@ -5,12 +5,20 @@ import java.util.Scanner;
 import hust.soict.dsai.aims.cart.Cart.Cart;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.MemoryDaemon;
 import hust.soict.dsai.aims.store.Store.Store;
 
 public class Aims {
 
 	public static void main(String[] args) {
 
+//		MemoryDaemon daemon = new MemoryDaemon();
+//		daemon.run();
+		
+		Thread thread = new Thread(new MemoryDaemon());
+		thread.setDaemon(true);
+		thread.start();
+		
 		Scanner scanner = new Scanner(System.in);
 		Store store = new Store();
 		Cart cart = new Cart();
