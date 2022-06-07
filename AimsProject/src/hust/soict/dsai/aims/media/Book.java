@@ -7,8 +7,18 @@ public class Book extends Media{
 
 	private List<String> authors = new ArrayList<String>();
 	
-	public Book() {
+	public Book(String title, List<String> authors) {
 		super();
+		this.setTitle(title);
+		this.authors = authors;
+	}
+	
+	public Book(String title, List<String> authors, String category, float cost) {
+		super();
+		this.setTitle(title);
+		this.setCategory(category);
+		this.setCost(cost);
+		this.authors = authors;
 	}
 	
 	public void addAuthor(String authorName) {

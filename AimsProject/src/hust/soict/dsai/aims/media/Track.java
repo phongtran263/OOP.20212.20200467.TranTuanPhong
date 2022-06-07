@@ -4,8 +4,17 @@ public class Track implements Playable{
 	private String title;
 	private int length;
 
-	public Track() {
-		
+	public Track(String title, int length) {
+		this.setTitle(title);
+		this.setLength(length);
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
 	}
 
 	public String getTitle() {

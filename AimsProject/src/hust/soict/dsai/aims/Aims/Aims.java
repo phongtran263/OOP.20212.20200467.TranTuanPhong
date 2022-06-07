@@ -1,11 +1,16 @@
 package hust.soict.dsai.aims.Aims;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import hust.soict.dsai.aims.cart.Cart.Cart;
+import hust.soict.dsai.aims.media.Book;
+import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.MemoryDaemon;
+import hust.soict.dsai.aims.media.Track;
 import hust.soict.dsai.aims.store.Store.Store;
 
 public class Aims {
@@ -15,9 +20,9 @@ public class Aims {
 //		MemoryDaemon daemon = new MemoryDaemon();
 //		daemon.run();
 		
-		Thread thread = new Thread(new MemoryDaemon());
-		thread.setDaemon(true);
-		thread.start();
+//		Thread thread = new Thread(new MemoryDaemon());
+//		thread.setDaemon(true);
+//		thread.start();
 		
 		Scanner scanner = new Scanner(System.in);
 		Store store = new Store();
@@ -112,10 +117,139 @@ public class Aims {
 					scanner.nextLine();
 					if(optionUpdate == 1) {
 						while(true) {
-							System.out.println("Please enter your media title:");
-							String optionAdd = scanner.nextLine();
-							Media media = new Media(optionAdd);
-							store.addMedia(media);
+							System.out.println("1. Add a disc"); 
+							System.out.println("2. Add a book"); 
+							System.out.println("0. Back"); 
+							System.out.println("Please choose a number: 0-1-2"); 
+							
+							int optionAdd = scanner.nextInt();
+							scanner.nextLine();
+							if(optionAdd == 1) {
+								System.out.println("1. Add a CD"); 
+								System.out.println("2. Add a DVD"); 
+								System.out.println("0. Back"); 
+								System.out.println("Please choose a number: 1-2-0"); 
+								
+								int optionDisc = scanner.nextInt();
+								scanner.nextLine();
+								if(optionDisc == 1) {
+									System.out.println("Please enter your CD's title:");
+									String titleCD = scanner.nextLine();
+									System.out.println("Please enter your CD's artist:");
+									String artist = scanner.nextLine();
+									System.out.println("Please enter your CD's cost:");
+									float cost = scanner.nextFloat();
+									scanner.nextLine();									
+
+									System.out.println("Please enter number of tracks of your CD:");
+									int num = scanner.nextInt();
+									scanner.nextLine();
+									ArrayList<Track> tracks = new ArrayList<Track>();
+									for(int i = 0; i < num; i++) {
+										System.out.println("Please enter your track's title:");
+										String title = scanner.nextLine();
+										System.out.println("Please enter your track's length:");
+										int length = scanner.nextInt();
+										scanner.nextLine();
+										tracks.add(new Track(title, length));
+									}
+									
+									store.addMedia(new CompactDisc(titleCD, artist, tracks, cost));
+								}
+								
+								else if(optionDisc == 2) {
+									System.out.println("1. Add title"); 
+									System.out.println("2. Add title, category, cost"); 
+									System.out.println("3. Add title, category, director, cost"); 
+									System.out.println("4. Add title, category, director, length, cost"); 
+									System.out.println("0. Back"); 
+									System.out.println("Please choose a number: 1-2-3-4-0"); 
+									int optionDVD = scanner.nextInt();
+									scanner.nextLine();
+									
+									if(optionDVD == 1) {
+										System.out.println("Please enter your dvd's title:");
+										String title = scanner.nextLine();
+										store.addMedia(new DigitalVideoDisc(title));
+									}
+									
+									else if(optionDVD == 2) {
+										System.out.println("Please enter your dvd's title:");
+										String title = scanner.nextLine();
+										System.out.println("Please enter your dvd's category:");
+										String category = scanner.nextLine();
+										System.out.println("Please enter your dvd's cost:");
+										float cost = scanner.nextFloat();
+										scanner.nextLine();
+										store.addMedia(new DigitalVideoDisc(title, category, cost));
+									}
+									
+									else if(optionDVD == 3) {
+										System.out.println("Please enter your dvd's title:");
+										String title = scanner.nextLine();
+										System.out.println("Please enter your dvd's category:");
+										String category = scanner.nextLine();
+										System.out.println("Please enter your dvd's director:");
+										String director = scanner.nextLine();
+										System.out.println("Please enter your dvd's cost:");
+										float cost = scanner.nextFloat();
+										scanner.nextLine();
+										store.addMedia(new DigitalVideoDisc(title, category, director, cost));
+									}
+
+									else if(optionDVD == 4) {
+										System.out.println("Please enter your dvd's title:");
+										String title = scanner.nextLine();
+										System.out.println("Please enter your dvd's category:");
+										String category = scanner.nextLine();
+										System.out.println("Please enter your dvd's director:");
+										String director = scanner.nextLine();
+										System.out.println("Please enter your dvd's length:");
+										int length = scanner.nextInt();
+										System.out.println("Please enter your dvd's cost:");
+										float cost = scanner.nextFloat();
+										scanner.nextLine();
+										store.addMedia(new DigitalVideoDisc(title, category, director, length, cost));
+									}
+
+									else if(optionDVD == 0) {}
+								}
+								else if(optionDisc == 0) {}
+							}
+							
+							else if(optionAdd == 2) {
+								System.out.println("1. Add title, authors"); 
+								System.out.println("2. Add title, authors, catagory, cost"); 
+								System.out.println("Please choose a number: 1-2"); 
+								
+								int optionArg = scanner.nextInt();
+								scanner.nextLine();
+								if(optionArg == 1) {
+									System.out.println("Please enter your book's title:");
+									String title = scanner.nextLine();
+									System.out.println("Please enter your book's authors:");
+									String authors = scanner.nextLine();
+									List<String> Authors = (List<String>)Arrays.asList(authors.split(","));
+									Book book = new Book(title, Authors);
+									store.addMedia(book);
+								}
+								
+								else if(optionArg == 2) {
+									System.out.println("Please enter your book's title:");
+									String title = scanner.nextLine();
+									System.out.println("Please enter your book's category:");
+									String category = scanner.nextLine();
+									System.out.println("Please enter your book's cost:");
+									float cost = scanner.nextFloat();
+									scanner.nextLine();
+									System.out.println("Please enter your book's authors:");
+									String authors = scanner.nextLine();
+									List<String> Authors = (List<String>)Arrays.asList(authors.split(","));
+									Book book = new Book(title, Authors, category, cost);
+									store.addMedia(book);									
+								}
+							}
+							else if(optionAdd == 0) {break;}
 							System.out.println("Would you like to add another one to store?(y/n)");
 							String addMore = scanner.nextLine();
 							if(addMore.equals("n")) {
