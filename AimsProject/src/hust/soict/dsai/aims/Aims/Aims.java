@@ -170,7 +170,6 @@ public class Aims {
 								while(true) {
 									System.out.println("Please enter your media title:");
 									String title = scanner.nextLine();
-									scanner.nextLine();
 									ArrayList<Media> result = cart.SearchByTitle(title);
 									System.out.println("Would you like to filter again?(y/n)");
 									String filterAgain = scanner.nextLine();

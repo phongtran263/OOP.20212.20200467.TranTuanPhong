@@ -1,5 +1,7 @@
 package hust.soict.dsai.aims.media;
 
+import java.time.LocalDate;
+
 public class Media {
 
 	private static int nbMedia = 0;
@@ -7,12 +9,14 @@ public class Media {
 	private String title; 
 	private String category;
 	private float cost;
+	private LocalDate dateAdded;
 	
 	public Media() {
 		nbMedia++;
 		this.id = nbMedia;
+		this.dateAdded = LocalDate.now();
 	}
-	
+
 	public Media(String title) {
 		nbMedia++;
 		this.id = nbMedia;
@@ -24,8 +28,8 @@ public class Media {
 	}
 
 	public boolean isMatch(String title2) {
-		String[] titleSplit = this.getTitle().split(" ");
-		String[] title2Split = title2.split(" ");
+		String[] titleSplit = this.getTitle().toLowerCase().split(" ");
+		String[] title2Split = title2.toLowerCase().split(" ");
 		
 		for(String s: titleSplit) {
 			for(String s2: title2Split) {
@@ -73,5 +77,8 @@ public class Media {
 	public int getId() {
 		return id;
 	}
-
+	
+	public LocalDate getDateAdded() {
+		return dateAdded;
+	}
 }

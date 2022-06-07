@@ -1,7 +1,6 @@
 package hust.soict.dsai.aims.cart.Cart;
 import java.util.ArrayList;
 
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.utils.DVDUtils.DVDUtils;
 
@@ -132,7 +131,7 @@ public class Cart {
 		}
 				
 		System.out.println("Media is not found.");		
-		return null;
+		return new Media(false);
 	}
 	
 	public ArrayList<Media> SearchByTitle(String title) {

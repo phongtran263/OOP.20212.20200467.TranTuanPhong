@@ -17,3 +17,9 @@ ANSWER: When we call swap(jungleDVD, cinderellaDVD), we just implement with the 
 QUESTION: After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
 
 ANSWER: When we call changeTitle(jungleDVD, cinderellaDVD.getTitle()), the copies still point to the same reference locations of the discs in the main class and the values in the reference locations. So that, the title value changes.
+
+QUESTION: Which classes are aggregates of other classes? Checking all constructors of whole classes if they initialize for their parts?
+
+ANSWER:	- Cart is aggregate of Media
+	- Store is aggregate of Media
+	- CompactDisc is aggregate of Track
