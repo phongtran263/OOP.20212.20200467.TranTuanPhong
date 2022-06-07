@@ -192,9 +192,7 @@ public class Cart {
 	}
 	
 	public void Empty() {
-		for(int i = this.itemsOrdered.size() - 1; i >= 0; i--) {
-			this.removeMedia(this.itemsOrdered.get(i));
-		}
+		this.itemsOrdered = new ArrayList<Media>();
 		System.out.println("The cart is empty now!");
 	}
 	
