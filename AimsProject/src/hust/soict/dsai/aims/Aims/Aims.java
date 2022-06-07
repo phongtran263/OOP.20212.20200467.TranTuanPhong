@@ -135,6 +135,8 @@ public class Aims {
 								if(optionDisc == 1) {
 									System.out.println("Please enter your CD's title:");
 									String titleCD = scanner.nextLine();
+									System.out.println("Please enter your CD's category:");
+									String category = scanner.nextLine();
 									System.out.println("Please enter your CD's artist:");
 									String artist = scanner.nextLine();
 									System.out.println("Please enter your CD's cost:");
@@ -153,8 +155,9 @@ public class Aims {
 										scanner.nextLine();
 										tracks.add(new Track(title, length));
 									}
-									
-									store.addMedia(new CompactDisc(titleCD, artist, tracks, cost));
+									CompactDisc CD = new CompactDisc(titleCD, category, artist, tracks, cost);
+									System.out.println(CD.toString());
+									store.addMedia(CD);
 								}
 								
 								else if(optionDisc == 2) {
@@ -170,7 +173,9 @@ public class Aims {
 									if(optionDVD == 1) {
 										System.out.println("Please enter your dvd's title:");
 										String title = scanner.nextLine();
-										store.addMedia(new DigitalVideoDisc(title));
+										DigitalVideoDisc DVD = new DigitalVideoDisc(title);
+										System.out.println(DVD.toString());
+										store.addMedia(DVD);
 									}
 									
 									else if(optionDVD == 2) {
@@ -180,8 +185,10 @@ public class Aims {
 										String category = scanner.nextLine();
 										System.out.println("Please enter your dvd's cost:");
 										float cost = scanner.nextFloat();
-										scanner.nextLine();
-										store.addMedia(new DigitalVideoDisc(title, category, cost));
+										scanner.nextLine();										
+										DigitalVideoDisc DVD = new DigitalVideoDisc(title, category, cost);
+										System.out.println(DVD.toString());
+										store.addMedia(DVD);
 									}
 									
 									else if(optionDVD == 3) {
@@ -194,7 +201,9 @@ public class Aims {
 										System.out.println("Please enter your dvd's cost:");
 										float cost = scanner.nextFloat();
 										scanner.nextLine();
-										store.addMedia(new DigitalVideoDisc(title, category, director, cost));
+										DigitalVideoDisc DVD = new DigitalVideoDisc(title, category, director, cost);
+										System.out.println(DVD.toString());
+										store.addMedia(DVD);
 									}
 
 									else if(optionDVD == 4) {
@@ -209,7 +218,9 @@ public class Aims {
 										System.out.println("Please enter your dvd's cost:");
 										float cost = scanner.nextFloat();
 										scanner.nextLine();
-										store.addMedia(new DigitalVideoDisc(title, category, director, length, cost));
+										DigitalVideoDisc DVD = new DigitalVideoDisc(title, category, director, length, cost);
+										System.out.println(DVD.toString());
+										store.addMedia(DVD);
 									}
 
 									else if(optionDVD == 0) {}
@@ -220,7 +231,8 @@ public class Aims {
 							else if(optionAdd == 2) {
 								System.out.println("1. Add title, authors"); 
 								System.out.println("2. Add title, authors, catagory, cost"); 
-								System.out.println("Please choose a number: 1-2"); 
+								System.out.println("0. Back"); 
+								System.out.println("Please choose a number: 1-2-0"); 
 								
 								int optionArg = scanner.nextInt();
 								scanner.nextLine();
@@ -231,6 +243,7 @@ public class Aims {
 									String authors = scanner.nextLine();
 									List<String> Authors = (List<String>)Arrays.asList(authors.split(","));
 									Book book = new Book(title, Authors);
+									System.out.println(book.toString());
 									store.addMedia(book);
 								}
 								
@@ -246,8 +259,10 @@ public class Aims {
 									String authors = scanner.nextLine();
 									List<String> Authors = (List<String>)Arrays.asList(authors.split(","));
 									Book book = new Book(title, Authors, category, cost);
+									System.out.println(book.toString());
 									store.addMedia(book);									
 								}
+								else if(optionArg == 0) {}
 							}
 							else if(optionAdd == 0) {break;}
 							System.out.println("Would you like to add another one to store?(y/n)");
