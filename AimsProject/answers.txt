@@ -23,3 +23,4 @@ QUESTION: Which classes are aggregates of other classes? Checking all constructo
 ANSWER:	- Cart is aggregate of Media
 	- Store is aggregate of Media
 	- CompactDisc is aggregate of Track
+	- Checking all constructors of whole classes if they initialize for their parts? Done

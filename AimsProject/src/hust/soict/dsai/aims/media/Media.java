@@ -16,12 +16,6 @@ public class Media {
 		this.id = nbMedia;
 		this.dateAdded = LocalDate.now();
 	}
-
-	public Media(String title) {
-		nbMedia++;
-		this.id = nbMedia;
-		this.setTitle(title);
-	}
 	
 	public Media(boolean Null) {
 		this.setTitle("Null media");
