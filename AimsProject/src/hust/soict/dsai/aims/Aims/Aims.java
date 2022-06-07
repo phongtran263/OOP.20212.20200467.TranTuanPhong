@@ -361,8 +361,8 @@ public class Aims {
 					}
 					
 					else if(optionCartMenu == 3) {
-						cart.print(false);
 						while(true) {
+							cart.print(false);
 							System.out.println("Please enter your media index:");
 							int index = scanner.nextInt();
 							scanner.nextLine();
