@@ -1,4 +1,5 @@
 package hust.soict.dsai.aims.cart.Cart;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import hust.soict.dsai.aims.media.Media;
@@ -166,7 +167,7 @@ public class Cart {
 			System.out.println("Congratulation!!! A lucky item is found in your cart. You can get it for free.");
 			System.out.println(this.luckyOne.toString());
 		}
-		System.out.println("Total cost: " + this.totalCost(forOrder));
+		System.out.println("Total cost: " + new DecimalFormat("0.00").format(this.totalCost(forOrder)) + "$");
 		System.out.println("***************************************************");
 	}
 	
