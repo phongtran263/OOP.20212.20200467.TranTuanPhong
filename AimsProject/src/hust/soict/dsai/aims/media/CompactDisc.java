@@ -16,22 +16,13 @@ public class CompactDisc extends Disc implements Playable{
 	}
 	
 	public void addTrack(Track track) {
-		boolean existStatus = false;
-		
-		for(Track t: this.tracks) {
-			if(t.getTitle().equals(track.getTitle())) {
-				existStatus = true;
-				break;
-			}
+		if(tracks.contains(track)) {
+			System.out.println("This media has been already existed.");
 		}
-		
-		if(existStatus) {
-			System.out.println("This track has been already in the cart.");
-		}
-		
+
 		else {
 			this.tracks.add(track);
-			System.out.println("This track has been added.");
+			System.out.println("This media has been added.");
 		}
 	}
 	

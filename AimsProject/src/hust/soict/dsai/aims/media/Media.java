@@ -43,6 +43,15 @@ public class Media {
 		
 		return "Media - " + this.getTitle();
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Media) {
+			return this.getId() == ((Media) o).getId();
+		}
+		
+		return false;
+	}
 
 	public String getTitle() {
 		return title;

@@ -19,23 +19,13 @@ public class Cart {
 		}
 		
 		else {
-			boolean existStatus = false;
-			
-			for(Media m: this.itemsOrdered) {
-				if(m.getTitle().equals(media.getTitle())) {
-					existStatus = true;
-					break;
-				}
-			}
-			
-			if(existStatus) {
+			if(itemsOrdered.contains(media)) {
 				System.out.println("This media has been already in the cart.");
 			}
-			
+
 			else {
 				this.itemsOrdered.add(media);
 				System.out.println("This media has been added.");
-				this.ChangeStatus = true;
 			}
 		}
 	}

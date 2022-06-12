@@ -26,4 +26,13 @@ public class Track implements Playable{
 	public String toString() {
 		return "Track - " + this.getTitle() + " - " + this.getLength();
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Track) {
+			return (this.getTitle() == ((Track) o).getTitle()) && (this.getLength() == ((Track) o).getLength());
+		}
+		
+		return false;
+	}
 }
