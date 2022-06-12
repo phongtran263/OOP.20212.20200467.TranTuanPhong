@@ -21,7 +21,7 @@ public class Cart {
 		else {
 			if(itemsOrdered.contains(media)) {
 				System.out.println("This media has been already in the cart.");
-			}
+			} 
 
 			else {
 				this.itemsOrdered.add(media);
