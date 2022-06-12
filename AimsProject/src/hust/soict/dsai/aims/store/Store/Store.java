@@ -9,19 +9,10 @@ public class Store {
 	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
 	public void addMedia(Media media) {
-		boolean existStatus = false;
-		
-		for(Media m: this.itemsInStore) {
-			if(m.getTitle().equals(media.getTitle())) {
-				existStatus = true;
-				break;
-			}
+		if(itemsInStore.contains(media)) {
+			System.out.println("This media has been already in the store.");
 		}
-		
-		if(existStatus) {
-			System.out.println("This media has been already in the cart.");
-		}
-		
+
 		else {
 			this.itemsInStore.add(media);
 			System.out.println("This media has been added.");
