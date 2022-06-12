@@ -2,7 +2,7 @@ package hust.soict.dsai.aims.media;
 
 import java.time.LocalDate;
 
-public class Media {
+public class Media implements Comparable<Media>{
 
 	private static int nbMedia = 0;
 	private int id = nbMedia;
@@ -83,5 +83,34 @@ public class Media {
 	
 	public LocalDate getDateAdded() {
 		return dateAdded;
+	}
+
+	@Override
+	public int compareTo(Media o) {
+		int l1 = this.getTitle().length();
+		int l2 = o.getTitle().length();
+		
+		int lenMin = Math.min(l1, l2);
+		for(int i = 0; i < lenMin; i++) {
+			if((int)this.getTitle().charAt(i) != (int)o.getTitle().charAt(i)) {
+				return (int)this.getTitle().charAt(i) - (int)o.getTitle().charAt(i);
+			}
+		}
+		if(l1 != l2) {
+			return l1 - l2;
+		}
+
+		int cl1 = this.getCategory().length();
+		int cl2 = o.getCategory().length();
+		
+		int clenMin = Math.min(cl1, cl2);
+		for(int i = 0; i < clenMin; i++) {
+			if((int)this.getCategory().charAt(i) != (int)o.getCategory().charAt(i)) {
+				return (int)this.getCategory().charAt(i) - (int)o.getCategory().charAt(i);
+			}
+		}
+
+		
+		return cl1 - cl2;
 	}
 }
