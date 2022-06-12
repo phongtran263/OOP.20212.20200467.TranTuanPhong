@@ -1,7 +1,9 @@
 package hust.soict.dsai.aims.store.Store;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.Playable;
 
 public class Store {
 	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
@@ -74,5 +76,33 @@ public class Store {
 		
 		System.out.println("Disc is not found.");		
 		return new Media(false);
+	}
+	
+	public void print() {
+		System.out.println("***********************STORE***********************");
+		System.out.println("Items:");
+		for(int i = 0; i < this.itemsInStore.size(); i++) {
+			System.out.print((i+1) + ". ");
+			System.out.println(this.itemsInStore.get(i).toString());
+		}
+		System.out.println("***************************************************");
+	}
+	
+	public void printForPlay() {
+		System.out.println("***********************CART***********************");
+		System.out.println("Items:");
+		for(int i = 0; i < this.itemsInStore.size(); i++) {
+			String playable = "";
+			if(this.itemsInStore.get(i) instanceof Playable) {
+				playable = "\nPlay";
+			}
+			System.out.print((i+1) + ". ");
+			System.out.println(this.itemsInStore.get(i).toString() + playable);
+		}
+		System.out.println("***************************************************");			
+	}
+	
+	public Media getMediaAtIndex(int index) {
+		return this.itemsInStore.get(index);
 	}
 }

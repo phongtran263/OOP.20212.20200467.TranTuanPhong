@@ -3,6 +3,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.Playable;
 import hust.soict.dsai.aims.utils.DVDUtils.DVDUtils;
 
 public class Cart {
@@ -155,23 +156,54 @@ public class Cart {
 		return result;
 	}
 	
-	public void print(boolean forOrder) {
+	public Media getMediaAtIndex(int index) {
+		return this.itemsOrdered.get(index);
+	}
+	
+	public void print() {
 		System.out.println("***********************CART***********************");
-		System.out.println("Ordered Items:");
+		System.out.println("Items:");
 		for(int i = 0; i < this.itemsOrdered.size(); i++) {
 			System.out.print((i+1) + ". ");
 			System.out.println(this.itemsOrdered.get(i).toString());
 		}
-		this.luckyOne = this.getALuckyItem();
-		if(this.luckyOne != null && forOrder && this.itemsOrdered.size() >= 5) {
-			System.out.println("Congratulation!!! A lucky item is found in your cart. You can get it for free.");
-			System.out.println(this.luckyOne.toString());
-		}
-		System.out.println("Total cost: " + new DecimalFormat("0.00").format(this.totalCost(forOrder)) + "$");
+		System.out.println("Total cost: " + new DecimalFormat("0.00").format(this.totalCost(true)) + "$");
 		System.out.println("***************************************************");
 	}
 	
-	public void print(String type) {
+	public void printFor(String purpose) {
+		if(purpose == "Order") {
+			System.out.println("***********************CART***********************");
+			System.out.println("Items:");
+			for(int i = 0; i < this.itemsOrdered.size(); i++) {
+				System.out.print((i+1) + ". ");
+				System.out.println(this.itemsOrdered.get(i).toString());
+			}
+			this.luckyOne = this.getALuckyItem();
+			if(this.luckyOne != null && this.itemsOrdered.size() >= 5) {
+				System.out.println("Congratulation!!! A lucky item is found in your cart. You can get it for free.");
+				System.out.println(this.luckyOne.toString());
+			}
+			System.out.println("Total cost: " + new DecimalFormat("0.00").format(this.totalCost(true)) + "$");
+			System.out.println("***************************************************");
+		}
+		
+		else if(purpose == "Play") {
+			System.out.println("***********************CART***********************");
+			System.out.println("Items:");
+			for(int i = 0; i < this.itemsOrdered.size(); i++) {
+				String playable = "";
+				if(this.itemsOrdered.get(i) instanceof Playable) {
+					playable = "\nPlay";
+				}
+				System.out.print((i+1) + ". ");
+				System.out.println(this.itemsOrdered.get(i).toString() + playable);
+			}
+			System.out.println("***************************************************");			
+		}
+	}
+	
+	public void Sortprint(String type) {
 		if(type == "title") {
 			this.CartSortByCost(false);
 			this.CartSortByTitle(false);
