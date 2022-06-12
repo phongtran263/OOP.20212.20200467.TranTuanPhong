@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims.media;
 
-public class DigitalVideoDisc extends Disc implements Playable, Comparable<DigitalVideoDisc>{
+public class DigitalVideoDisc extends Disc implements Playable{
 	
 	public DigitalVideoDisc(String title) {
 		super();
@@ -51,12 +51,5 @@ public class DigitalVideoDisc extends Disc implements Playable, Comparable<Digit
 		System.out.println("Playing DVD: " + this.getTitle());
 		System.out.println("DVD length: " + this.getLength());
 	}
-
-	@Override
-	public int compareTo(DigitalVideoDisc o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 }
 
