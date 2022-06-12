@@ -1,4 +1,5 @@
 package hust.soict.dsai.aims.Aims;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -97,7 +98,25 @@ public class Aims {
 					}
 					
 					else if(optionStoreMenu == 3) {
-						cart.print(false);
+						cart.print();
+						System.out.println("Please enter index of media to play: ");
+						int index = scanner.nextInt();
+						scanner.nextLine();
+						Media chosenMedia = store.getMediaAtIndex(index);
+						if(chosenMedia instanceof DigitalVideoDisc) {
+							((DigitalVideoDisc) chosenMedia).play();
+						}
+						else if(chosenMedia instanceof CompactDisc) {
+							((CompactDisc) chosenMedia).play();
+						}
+						else if(chosenMedia instanceof Book) {
+							System.out.println("Cannot play a book!");
+						}
+					}
+					
+					else if(optionStoreMenu == 4) {
+						store.printForPlay();
+						
 					}
 					
 					else if(optionStoreMenu == 0) {
@@ -349,10 +368,10 @@ public class Aims {
 							int option = scanner.nextInt();
 							scanner.nextLine();
 							if(option == 1) {
-								cart.print("title");
+								cart.Sortprint("title");
 							}
 							else if(option == 2) {
-								cart.print("cost");
+								cart.Sortprint("cost");
 							}
 							else if(option == 0) {
 								break;
@@ -362,7 +381,7 @@ public class Aims {
 					
 					else if(optionCartMenu == 3) {
 						while(true) {
-							cart.print(false);
+							cart.print();
 							System.out.println("Please enter your media index:");
 							int index = scanner.nextInt();
 							scanner.nextLine();
@@ -376,7 +395,24 @@ public class Aims {
 					}
 					
 					else if(optionCartMenu == 4) {
-						cart.print(true);
+						cart.printFor("Play");
+						System.out.println("Please enter index of media to play: ");
+						int index = scanner.nextInt();
+						scanner.nextLine();
+						Media chosenMedia = cart.getMediaAtIndex(index - 1);
+						if(chosenMedia instanceof DigitalVideoDisc) {
+							((DigitalVideoDisc) chosenMedia).play();
+						}
+						else if(chosenMedia instanceof CompactDisc) {
+							((CompactDisc) chosenMedia).play();
+						}
+						else if(chosenMedia instanceof Book) {
+							System.out.println("Cannot play a book!");
+						}
+					}
+					
+					else if(optionCartMenu == 5) {
+						cart.printFor("Order");
 						System.out.println("An order is created.");
 						cart.Empty();
 					}
@@ -412,9 +448,10 @@ public class Aims {
 		System.out.println("1. See a media’s details"); 
 		System.out.println("2. Add a media to cart"); 
 		System.out.println("3. See current cart"); 
+		System.out.println("4. Play a media"); 
 		System.out.println("0. Back"); 
 		System.out.println("--------------------------------"); 
-		System.out.println("Please choose a number: 0-1-2-3");
+		System.out.println("Please choose a number: 0-1-2-3-4");
 	}
 		
 	public static void cartMenu() { 
@@ -423,9 +460,10 @@ public class Aims {
 		System.out.println("1. Filter medias in cart"); 
 		System.out.println("2. Sort medias in cart"); 
 		System.out.println("3. Remove a media from cart"); 
-		System.out.println("4. Place order"); 
+		System.out.println("4. Play a media"); 
+		System.out.println("5. Place order"); 
 		System.out.println("0. Back"); 
 		System.out.println("--------------------------------"); 
-		System.out.println("Please choose a number: 0-1-2-3-4");
+		System.out.println("Please choose a number: 0-1-2-3-4-5");
 	}
 }
