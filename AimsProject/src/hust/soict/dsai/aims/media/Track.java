@@ -24,7 +24,7 @@ public class Track implements Playable{
 	}
 
 	public String toString() {
-		return "Track - " + this.getTitle() + " - " + this.getLength();
+		return "Track" + "\nTitle: " + this.getTitle() + "\nLength: " + this.getLength();
 	}
 	
 	@Override
