@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
+import java.util.regex.Pattern;
 
 public class Book extends Media{
 
@@ -76,7 +77,8 @@ public class Book extends Media{
 	}
 	
 	public void processContent() {
-		this.contentTokens = Arrays.asList(this.content.toLowerCase().split(" "));
+		this.contentTokens = Arrays.asList(this.content.toLowerCase().split("\\P{L}+"));
+						
 		Collections.sort(this.contentTokens);
 		
 		for(String s: this.contentTokens) {

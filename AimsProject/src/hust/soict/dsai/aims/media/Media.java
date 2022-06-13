@@ -35,15 +35,7 @@ public class Media implements Comparable<Media>{
 		
 		return false;
 	}
-	
-	public String toString() {
-		if(this.getTitle().equals("Null media")) {
-			return this.getTitle();
-		}
 		
-		return "Media - " + this.getTitle();
-	}
-	
 	@Override
 	public boolean equals(Object o) {
 		if(o instanceof Media) {
