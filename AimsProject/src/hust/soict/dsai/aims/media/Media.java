@@ -84,8 +84,8 @@ public class Media implements Comparable<Media>{
 		
 		int lenMin = Math.min(l1, l2);
 		for(int i = 0; i < lenMin; i++) {
-			if((int)this.getTitle().charAt(i) != (int)o.getTitle().charAt(i)) {
-				return (int)this.getTitle().charAt(i) - (int)o.getTitle().charAt(i);
+			if((int)this.getTitle().toLowerCase().charAt(i) != (int)o.getTitle().toLowerCase().charAt(i)) {
+				return (int)this.getTitle().toLowerCase().charAt(i) - (int)o.getTitle().toLowerCase().charAt(i);
 			}
 		}
 		if(l1 != l2) {
@@ -97,8 +97,8 @@ public class Media implements Comparable<Media>{
 		
 		int clenMin = Math.min(cl1, cl2);
 		for(int i = 0; i < clenMin; i++) {
-			if((int)this.getCategory().charAt(i) != (int)o.getCategory().charAt(i)) {
-				return (int)this.getCategory().charAt(i) - (int)o.getCategory().charAt(i);
+			if((int)this.getCategory().toLowerCase().charAt(i) != (int)o.getCategory().toLowerCase().charAt(i)) {
+				return (int)this.getCategory().toLowerCase().charAt(i) - (int)o.getCategory().toLowerCase().charAt(i);
 			}
 		}
 

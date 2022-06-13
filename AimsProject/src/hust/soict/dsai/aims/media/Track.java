@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims.media;
 
-public class Track implements Playable{
+public class Track implements Playable, Comparable<Track>{
 	private String title;
 	private int length;
 
@@ -36,5 +36,20 @@ public class Track implements Playable{
 		}
 		
 		return false;
+	}
+
+	@Override
+	public int compareTo(Track o) {
+		int l1 = this.getTitle().length();
+		int l2 = o.getTitle().length();
+		
+		int lenMin = Math.min(l1, l2);
+		for(int i = 0; i < lenMin; i++) {
+			if((int)this.getTitle().toLowerCase().charAt(i) != (int)o.getTitle().toLowerCase().charAt(i)) {
+				return (int)this.getTitle().toLowerCase().charAt(i) - (int)o.getTitle().toLowerCase().charAt(i);
+			}
+		}
+		
+		return l1 - l2;
 	}
 }

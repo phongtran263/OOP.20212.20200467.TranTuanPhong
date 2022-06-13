@@ -51,13 +51,9 @@ public class CompactDisc extends Disc implements Playable{
 		return sumLength;
 	}
 
-	public String getArtist() {
-		return artist;
-	}
-
 	@Override
 	public void play() {
-		System.out.println("Artist: " + this.getArtist());
+		System.out.println("Artist: " + this.artist);
 		System.out.println("Total length: " + this.getLength());
 		
 		for(Track t: this.tracks) {
@@ -74,6 +70,6 @@ public class CompactDisc extends Disc implements Playable{
 			tracksString+= this.tracks.get(i).toString();
 		}
 		
-		return "CD" + "\nTitle: " + this.getTitle() + "\nCategory: " + this.getCategory() + "\nArtist: " + this.getArtist() + "\nLength: " + this.getLength() + "\nCost: " + this.getCost() + "$" + tracksString;
+		return "CD" + "\nTitle: " + this.getTitle() + "\nCategory: " + this.getCategory() + "\nArtist: " + this.artist + "\nLength: " + this.getLength() + "\nCost: " + this.getCost() + "$" + tracksString;
 	}
 }
