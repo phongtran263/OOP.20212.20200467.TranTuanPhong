@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
 
 public class TestMediaCompareTo {
 
@@ -14,8 +15,8 @@ public class TestMediaCompareTo {
 		Collection collection = new ArrayList();
 
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star War", "Science Fiction", "George Lucas", 87, 19.95f);
+		DigitalVideoDisc dvd3 = new DigitalVideoDisc("The Lion King", "Animation", 18.99f);
 
 		
 		collection.add(dvd2);
@@ -29,7 +30,7 @@ public class TestMediaCompareTo {
 			System.out.println(((DigitalVideoDisc) iterator.next()).getTitle());
 		}
 		
-		Collections.sort((List) collection);
+		Collections.sort((List) collection, Media.COMPARE_BY_TITLE_COST);
 		
 		iterator = collection.iterator();
 		
@@ -37,7 +38,8 @@ public class TestMediaCompareTo {
 		System.out.println("The DVDs in sorted order are: ");
 		
 		while(iterator.hasNext()) {
-			System.out.println(((DigitalVideoDisc) iterator.next()).getTitle());
+			DigitalVideoDisc dvd = (DigitalVideoDisc) iterator.next();
+			System.out.println(dvd.getTitle() + " " + dvd.getCost());
 		}
 		
 		System.out.println("--------------------------------------");
