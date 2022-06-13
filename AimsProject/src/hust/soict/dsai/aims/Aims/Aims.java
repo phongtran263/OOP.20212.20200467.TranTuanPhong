@@ -49,6 +49,22 @@ public class Aims {
 		store.addMedia(media5);
 		cart.addMedia(media5);
 
+		CompactDisc cd = new CompactDisc("p", "p", "p", new ArrayList<Track>(), 10);
+		Track tr1 = new Track("p1", 1);
+		Track tr2 = new Track("p2", 9);
+		Track tr3 = new Track("p3", 1);
+		cd.addTrack(tr1);
+		cd.addTrack(tr2);
+		cd.addTrack(tr3);
+		store.addMedia(cd);
+		cart.addMedia(cd);
+
+		Book book = new Book("phong", new ArrayList<String>(), "this is a test class!!!", "book", 99);
+		book.addAuthor("person1");
+		book.addAuthor("person2");
+		store.addMedia(book);
+		cart.addMedia(book);
+		
 		System.out.println("Hello!!! Welcome to AIMS.");
 		while(true) {
 			showMenu();
@@ -166,7 +182,7 @@ public class Aims {
 									scanner.nextLine();
 									int tmpnum = num;
 									ArrayList<Track> tracks = new ArrayList<Track>();
-									CompactDisc CD = new CompactDisc(titleCD, category, artist, tracks, cost);
+									CompactDisc CDAdd = new CompactDisc(titleCD, category, artist, tracks, cost);
 									while(num > 0) {
 										System.out.println("Please enter your track" + (tmpnum - num + 1) + "'s title:");
 										String title = scanner.nextLine();
@@ -174,16 +190,16 @@ public class Aims {
 										int length = scanner.nextInt();
 										scanner.nextLine();
 										Track track = new Track(title, length);
-										if(CD.getTracks().contains(track)) {
+										if(CDAdd.getTracks().contains(track)) {
 											System.out.println("This track is existed.");
 										}
 										else {
-											CD.addTrack(track);
+											CDAdd.addTrack(track);
 											num--;
 										}
 									}
-									System.out.println(CD.toString());
-									store.addMedia(CD);
+									System.out.println(CDAdd.toString());
+									store.addMedia(CDAdd);
 								}
 								
 								else if(optionDisc == 2) {
@@ -267,9 +283,9 @@ public class Aims {
 								System.out.println("Please enter your book's cost:");
 								float cost = scanner.nextFloat();
 								scanner.nextLine();
-								Book book = new Book(title, Authors, content, category, cost);
-								System.out.println(book.toString());
-								store.addMedia(book);									
+								Book bookAdd = new Book(title, Authors, content, category, cost);
+								System.out.println(bookAdd.toString());
+								store.addMedia(bookAdd);									
 							}
 							else if(optionAdd == 0) {break;}
 							System.out.println("Would you like to add another one to store?(y/n)");
@@ -373,6 +389,7 @@ public class Aims {
 							System.out.println("Please enter your media index:");
 							int index = scanner.nextInt();
 							scanner.nextLine();
+							System.out.println(cart.getMediaAtIndex(index - 1));
 							int b = cart.removeMedia(index - 1);
 							System.out.println("Would you like to remove another one from your cart?(y/n)");
 							String removeMore = scanner.nextLine();

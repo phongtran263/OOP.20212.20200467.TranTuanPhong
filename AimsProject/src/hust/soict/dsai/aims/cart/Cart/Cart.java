@@ -65,7 +65,7 @@ public class Cart {
 	public int removeMedia(int index) {
 		if((0 <= index) && (index< this.itemsOrdered.size())) {
 			this.itemsOrdered.remove(index);
-			System.out.println("The media at this index has been removed.");
+			System.out.println("The media has been removed.");
 			this.ChangeStatus = true;
 			return 1;
 		}
@@ -182,7 +182,7 @@ public class Cart {
 			for(int i = 0; i < this.itemsOrdered.size(); i++) {
 				String playable = "";
 				if(this.itemsOrdered.get(i) instanceof Playable) {
-					playable = "\nPlay";
+					playable = "\n**Play**\n";
 				}
 				System.out.print((i+1) + ". ");
 				System.out.println(this.itemsOrdered.get(i).toString() + playable);
@@ -205,7 +205,7 @@ public class Cart {
 			System.out.print((i+1) + ". ");
 			System.out.println(this.itemsOrdered.get(i).toString());
 		}
-		System.out.println("Total cost: " + this.totalCost(false));
+		System.out.println("Total cost: " + this.totalCost(false) + "$");
 		System.out.println("***************************************************");
 	}
 	

@@ -24,7 +24,7 @@ public class Track implements Playable, Comparable<Track>{
 	}
 
 	public String toString() {
-		return "Track" + "\nTitle: " + this.getTitle() + "\nLength: " + this.getLength();
+		return "Track" + "\nTitle: " + this.getTitle() + "\nLength: " + this.getLength() + "\n";
 	}
 	
 	@Override

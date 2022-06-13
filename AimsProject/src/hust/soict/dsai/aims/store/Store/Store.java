@@ -82,7 +82,7 @@ public class Store {
 		for(int i = 0; i < this.itemsInStore.size(); i++) {
 			String playable = "";
 			if(this.itemsInStore.get(i) instanceof Playable) {
-				playable = "\n**Play**";
+				playable = "\n**Play**\n";
 			}
 			System.out.print((i+1) + ". ");
 			System.out.println(this.itemsInStore.get(i).toString() + playable);

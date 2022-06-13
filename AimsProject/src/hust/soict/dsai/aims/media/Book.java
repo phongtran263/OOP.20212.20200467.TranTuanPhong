@@ -73,7 +73,7 @@ public class Book extends Media{
 			i++;
 		}
 		
-		return "Book" + "\nTitle: " + this.getTitle() + "\nCategory: " + this.getCategory() + "\nContent: " + this.content + "\nLength: " + this.contentTokens.size() + "\nWord frequency: " + FreqString + "\nAuthors: " + authorsString + "\nCost: " + this.getCost() + "$";
+		return "Book" + "\nTitle: " + this.getTitle() + "\nCategory: " + this.getCategory() + "\nContent: " + this.content + "\nLength: " + this.contentTokens.size() + "\nWord frequency: " + FreqString + "\nAuthors: " + authorsString + "\nCost: " + this.getCost() + "$\n";
 	}
 	
 	public void processContent() {
