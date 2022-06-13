@@ -248,40 +248,21 @@ public class Aims {
 							}
 							
 							else if(optionAdd == 2) {
-								System.out.println("1. Add title, authors"); 
-								System.out.println("2. Add title, authors, catagory, cost"); 
-								System.out.println("0. Back"); 
-								System.out.println("Please choose a number: 1-2-0"); 
-								
-								int optionArg = scanner.nextInt();
+								System.out.println("Please enter your book's title:");
+								String title = scanner.nextLine();
+								System.out.println("Please enter your book's authors:");
+								String authors = scanner.nextLine();
+								List<String> Authors = (List<String>)Arrays.asList(authors.split(","));
+								System.out.println("Please enter yourr book's content: ");
+								String content = scanner.nextLine();
+								System.out.println("Please enter your book's category:");
+								String category = scanner.nextLine();
+								System.out.println("Please enter your book's cost:");
+								float cost = scanner.nextFloat();
 								scanner.nextLine();
-								if(optionArg == 1) {
-									System.out.println("Please enter your book's title:");
-									String title = scanner.nextLine();
-									System.out.println("Please enter your book's authors:");
-									String authors = scanner.nextLine();
-									List<String> Authors = (List<String>)Arrays.asList(authors.split(","));
-									Book book = new Book(title, Authors);
-									System.out.println(book.toString());
-									store.addMedia(book);
-								}
-								
-								else if(optionArg == 2) {
-									System.out.println("Please enter your book's title:");
-									String title = scanner.nextLine();
-									System.out.println("Please enter your book's category:");
-									String category = scanner.nextLine();
-									System.out.println("Please enter your book's cost:");
-									float cost = scanner.nextFloat();
-									scanner.nextLine();
-									System.out.println("Please enter your book's authors:");
-									String authors = scanner.nextLine();
-									List<String> Authors = (List<String>)Arrays.asList(authors.split(","));
-									Book book = new Book(title, Authors, category, cost);
-									System.out.println(book.toString());
-									store.addMedia(book);									
-								}
-								else if(optionArg == 0) {}
+								Book book = new Book(title, Authors, content, category, cost);
+								System.out.println(book.toString());
+								store.addMedia(book);									
 							}
 							else if(optionAdd == 0) {break;}
 							System.out.println("Would you like to add another one to store?(y/n)");

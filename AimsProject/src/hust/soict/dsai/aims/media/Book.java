@@ -1,21 +1,25 @@
 package hust.soict.dsai.aims.media;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 
 public class Book extends Media{
 
 	private List<String> authors = new ArrayList<String>();
+	private String content;
+	private List<String> contentTokens = new ArrayList<String>();
+	private Map<String, Integer> wordFrequency = new TreeMap<String, Integer>();
 	
-	public Book(String title, List<String> authors) {
+	public Book(String title, List<String> authors, String content, String category, float cost) {
 		super();
 		this.setTitle(title);
-		this.authors = authors;
-	}
-	
-	public Book(String title, List<String> authors, String category, float cost) {
-		super();
-		this.setTitle(title);
+		this.content = content;
 		this.setCategory(category);
 		this.setCost(cost);
 		this.authors = authors;
@@ -48,13 +52,35 @@ public class Book extends Media{
 	}
 
 	public String toString() {		
-		String authorsString = this.authors.get(0);
-		
+		String authorsString = this.authors.get(0);		
 		for(int i = 1; i < this.authors.size(); i++) {
 			authorsString+=", ";
 			authorsString+=this.authors.get(i);
 		}
 		
-		return "Book - " + this.getTitle() + " - " + this.getCategory() + " - " + authorsString + ": " + this.getCost() + "$";
+		this.processContent();
+		String FreqString = "";	
+		int size = this.wordFrequency.size();
+		int i = 0;
+		for (Entry<String, Integer> entry : this.wordFrequency.entrySet()) {
+			String key = entry.getKey();
+			int value = entry.getValue();
+			FreqString+= (key + ": " + value);
+			if(i < size - 1) {
+				FreqString+=", ";
+			}
+			i++;
+		}
+		
+		return "Book" + "\nTitle: " + this.getTitle() + "\nCategory: " + this.getCategory() + "\nContent: " + this.content + "\nLength: " + this.contentTokens.size() + "\nWord frequency: " + FreqString + "\nAuthors: " + authorsString + "\nCost: " + this.getCost() + "$";
+	}
+	
+	public void processContent() {
+		this.contentTokens = Arrays.asList(this.content.toLowerCase().split(" "));
+		Collections.sort(this.contentTokens);
+		
+		for(String s: this.contentTokens) {
+			this.wordFrequency.compute(s, (k, v) -> v == null ? 1 : v + 1);
+		}
 	}
 }
