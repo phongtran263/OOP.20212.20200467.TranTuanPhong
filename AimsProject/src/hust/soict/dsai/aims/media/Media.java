@@ -1,6 +1,7 @@
 package hust.soict.dsai.aims.media;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 
 public class Media implements Comparable<Media>{
 
@@ -10,6 +11,9 @@ public class Media implements Comparable<Media>{
 	private String category;
 	private float cost;
 	private LocalDate dateAdded;
+	
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 	
 	public Media() {
 		nbMedia++;
