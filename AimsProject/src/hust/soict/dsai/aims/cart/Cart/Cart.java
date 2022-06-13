@@ -1,6 +1,7 @@
 package hust.soict.dsai.aims.cart.Cart;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
@@ -91,8 +92,8 @@ public class Cart {
 		return cost;
 	}
 	
-	public void CartSortByCost(boolean show) {
-		this.itemsOrdered = DVDUtils.sortByCost(this.itemsOrdered);
+	public void CartSortByCostTitle(boolean show) {
+		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_COST_TITLE);
 		
 		if(show) {
 			System.out.println("sort by cost: ");
@@ -102,8 +103,8 @@ public class Cart {
 		}
 	}
 	
-	public void CartSortByTitle(boolean show) {
-		this.itemsOrdered = DVDUtils.sortByTitle(this.itemsOrdered);
+	public void CartSortByTitleCost(boolean show) {
+		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_TITLE_COST);
 
 		if(show) {
 			System.out.println("sort by title: ");
@@ -195,13 +196,11 @@ public class Cart {
 	
 	public void Sortprint(String type) {
 		if(type == "title") {
-			this.CartSortByCost(false);
-			this.CartSortByTitle(false);
+			this.CartSortByTitleCost(false);
 		}
 		
 		else if(type == "cost") {
-			this.CartSortByTitle(false);
-			this.CartSortByCost(false);
+			this.CartSortByCostTitle(false);
 		}
 		System.out.println("***********************CART***********************");
 		System.out.println("Ordered Items:");

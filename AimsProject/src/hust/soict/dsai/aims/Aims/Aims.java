@@ -99,10 +99,14 @@ public class Aims {
 					
 					else if(optionStoreMenu == 3) {
 						cart.print();
+					}
+					
+					else if(optionStoreMenu == 4) {
+						store.printForPlay();
 						System.out.println("Please enter index of media to play: ");
 						int index = scanner.nextInt();
 						scanner.nextLine();
-						Media chosenMedia = store.getMediaAtIndex(index);
+						Media chosenMedia = store.getMediaAtIndex(index - 1);
 						if(chosenMedia instanceof DigitalVideoDisc) {
 							((DigitalVideoDisc) chosenMedia).play();
 						}
@@ -111,12 +115,7 @@ public class Aims {
 						}
 						else if(chosenMedia instanceof Book) {
 							System.out.println("Cannot play a book!");
-						}
-					}
-					
-					else if(optionStoreMenu == 4) {
-						store.printForPlay();
-						
+						}						
 					}
 					
 					else if(optionStoreMenu == 0) {

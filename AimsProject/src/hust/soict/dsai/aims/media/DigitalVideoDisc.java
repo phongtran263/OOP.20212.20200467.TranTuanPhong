@@ -40,7 +40,7 @@ public class DigitalVideoDisc extends Disc implements Playable{
 			s+= ("\nDirector: " + this.director);
 		}
 		if(this.length != 0) {
-			s+= ("\nDirector: " + this.length);
+			s+= ("\nLength: " + this.length);
 		}
 		s+= ("\nCost: " + this.getCost());
 		
@@ -50,7 +50,7 @@ public class DigitalVideoDisc extends Disc implements Playable{
 	@Override
 	public void play() {
 		System.out.println("Playing DVD: " + this.getTitle());
-		System.out.println("DVD length: " + this.getLength());
+		System.out.println("DVD length: " + this.length);
 	}
 }
 
