@@ -42,7 +42,7 @@ public class DigitalVideoDisc extends Disc implements Playable{
 		if(this.length != 0) {
 			s+= ("\nLength: " + this.length);
 		}
-		s+= ("\nCost: " + this.getCost());
+		s+= ("\nCost: " + this.getCost() + "$");
 		
 		return s;
 	}

@@ -1,18 +1,16 @@
 package hust.soict.dsai.aims.cart.Cart;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
-import hust.soict.dsai.aims.utils.DVDUtils.DVDUtils;
 
 public class Cart {
 	
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
 	private boolean ChangeStatus = true;
-	private Media luckyOne = new Media(false); // create null media
+	private Media luckyOne = null;
 	
 	public void addMedia(Media media) {
 		if(this.itemsOrdered.size() >= MAX_NUMBERS_ORDERED) {
@@ -55,12 +53,9 @@ public class Cart {
 	}
 	
 	public int removeMedia(Media media) {
-		for(int i = 0; i < this.itemsOrdered.size(); i++) {
-			if(this.itemsOrdered.get(i).getTitle().equals(media.getTitle())) {
-				System.out.println("This media has been removed.");
-				this.ChangeStatus = true;
-				return 1;
-			}
+		if(this.itemsOrdered.contains(media)) {
+			this.itemsOrdered.remove(media);
+			System.out.println("This media has bee removed.");
 		}
 		
 		System.out.println("This media is not exist.");
@@ -89,7 +84,7 @@ public class Cart {
 			cost-=this.getALuckyItem().getCost();
 		}
 		
-		return cost;
+		return (float)Math.round(cost*100)/100;
 	}
 	
 	public void CartSortByCostTitle(boolean show) {
@@ -124,7 +119,7 @@ public class Cart {
 		}
 				
 		System.out.println("Media is not found.");		
-		return new Media(false);
+		return null;
 	}
 	
 	public ArrayList<Media> SearchByTitle(String title) {
@@ -158,7 +153,7 @@ public class Cart {
 			System.out.print((i+1) + ". ");
 			System.out.println(this.itemsOrdered.get(i).toString());
 		}
-		System.out.println("Total cost: " + new DecimalFormat("0.00").format(this.totalCost(true)) + "$");
+		System.out.println("Total cost: " + this.totalCost(false) + "$");
 		System.out.println("***************************************************");
 	}
 	
@@ -172,10 +167,12 @@ public class Cart {
 			}
 			this.luckyOne = this.getALuckyItem();
 			if(this.luckyOne != null && this.itemsOrdered.size() >= 5) {
+				System.out.println("---------------------------------");
 				System.out.println("Congratulation!!! A lucky item is found in your cart. You can get it for free.");
 				System.out.println(this.luckyOne.toString());
+				System.out.println("---------------------------------");
 			}
-			System.out.println("Total cost: " + new DecimalFormat("0.00").format(this.totalCost(true)) + "$");
+			System.out.println("Total cost: " + this.totalCost(true) + "$");
 			System.out.println("***************************************************");
 		}
 		

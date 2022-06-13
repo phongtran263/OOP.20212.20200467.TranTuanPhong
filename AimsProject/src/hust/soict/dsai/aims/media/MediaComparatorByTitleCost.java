@@ -11,8 +11,8 @@ public class MediaComparatorByTitleCost implements Comparator<Media>{
 		
 		int lenMin = Math.min(l1, l2);
 		for(int i = 0; i < lenMin; i++) {
-			int num1 = (int)o1.getTitle().charAt(i);
-			int num2 = (int)o2.getTitle().charAt(i);
+			int num1 = (int)o1.getTitle().toLowerCase().charAt(i);
+			int num2 = (int)o2.getTitle().toLowerCase().charAt(i);
 			if(num1 != num2) {
 				return (int) ((num1 - num2)/Math.abs(num1 - num2));
 			}

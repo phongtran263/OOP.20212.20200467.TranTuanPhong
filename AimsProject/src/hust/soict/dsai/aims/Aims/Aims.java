@@ -29,7 +29,7 @@ public class Aims {
 		Store store = new Store();
 		Cart cart = new Cart();
 		
-		DigitalVideoDisc media1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
+		DigitalVideoDisc media1 = new DigitalVideoDisc("the Lion King", "Animation", "Roger Allers", 87, 19.95f);
 		store.addMedia(media1);
 		cart.addMedia(media1);
 		
@@ -41,7 +41,7 @@ public class Aims {
 		store.addMedia(media3);
 		cart.addMedia(media3);
 		
-		DigitalVideoDisc media4 = new DigitalVideoDisc("Lion King", "Animation", "Roger Allers", 87, 19.95f);
+		DigitalVideoDisc media4 = new DigitalVideoDisc("lion King", "Animation", "Roger Allers", 87, 19.95f);
 		store.addMedia(media4);
 		cart.addMedia(media4);
 
@@ -164,16 +164,24 @@ public class Aims {
 									System.out.println("Please enter number of tracks of your CD:");
 									int num = scanner.nextInt();
 									scanner.nextLine();
+									int tmpnum = num;
 									ArrayList<Track> tracks = new ArrayList<Track>();
-									for(int i = 0; i < num; i++) {
-										System.out.println("Please enter your track's title:");
+									CompactDisc CD = new CompactDisc(titleCD, category, artist, tracks, cost);
+									while(num > 0) {
+										System.out.println("Please enter your track" + (tmpnum - num + 1) + "'s title:");
 										String title = scanner.nextLine();
-										System.out.println("Please enter your track's length:");
+										System.out.println("Please enter your track" + (tmpnum - num + 1) + "'s length:");
 										int length = scanner.nextInt();
 										scanner.nextLine();
-										tracks.add(new Track(title, length));
+										Track track = new Track(title, length);
+										if(CD.getTracks().contains(track)) {
+											System.out.println("This track is existed.");
+										}
+										else {
+											CD.addTrack(track);
+											num--;
+										}
 									}
-									CompactDisc CD = new CompactDisc(titleCD, category, artist, tracks, cost);
 									System.out.println(CD.toString());
 									store.addMedia(CD);
 								}

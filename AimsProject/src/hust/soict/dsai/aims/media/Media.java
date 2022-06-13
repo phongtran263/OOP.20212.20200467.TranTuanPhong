@@ -21,10 +21,6 @@ public class Media implements Comparable<Media>{
 		this.dateAdded = LocalDate.now();
 	}
 	
-	public Media(boolean Null) {
-		this.setTitle("Null media");
-	}
-
 	public boolean isMatch(String title2) {
 		String[] titleSplit = this.getTitle().toLowerCase().split(" ");
 		String[] title2Split = title2.toLowerCase().split(" ");

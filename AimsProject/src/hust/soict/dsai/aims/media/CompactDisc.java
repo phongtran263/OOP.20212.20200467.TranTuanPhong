@@ -16,27 +16,22 @@ public class CompactDisc extends Disc implements Playable{
 	}
 	
 	public void addTrack(Track track) {
-		if(tracks.contains(track)) {
-			System.out.println("This media has been already existed.");
+		if(this.tracks.contains(track)) {
+			System.out.println("This track has been already existed.");
 		}
 
 		else {
 			this.tracks.add(track);
-			System.out.println("This media has been added.");
+			System.out.println("This track has been added.");
 		}
 	}
 	
-	public void removeTrack(Track track) {
-		boolean existStatus = false;
-		
-		for(Track t: this.tracks) {
-			if(t.getTitle().equals(track.getTitle())) {
-				existStatus = true;
-				break;
-			}
-		}
-		
-		if(!existStatus) {
+	public ArrayList<Track> getTracks() {
+		return this.tracks;
+	}
+
+	public void removeTrack(Track track) {		
+		if(!this.tracks.contains(track)) {
 			System.out.println("This track is not exist.");
 		}
 		
@@ -71,13 +66,14 @@ public class CompactDisc extends Disc implements Playable{
 	}
 
 	public String toString() {
-		String tracksString = "Track - " + this.tracks.get(0).getTitle() + " - " + this.tracks.get(0).getLength();
+		String tracksString = "";
 		
-		for(int i = 1; i < this.tracks.size(); i++) {
-			tracksString+= this.tracks.get(i).toString();
+		for(int i = 0; i < this.tracks.size(); i++) {
 			tracksString+="\n";
+			tracksString+= "-";
+			tracksString+= this.tracks.get(i).toString();
 		}
 		
-		return "CD" + "\nTitle: " + this.getTitle() + "\nCategory" + this.getCategory() + "\nArtist: " + this.getArtist() + "\nLength: " + this.getLength() + "\nCost: " + this.getCost() + "$" + "\n" + tracksString;
+		return "CD" + "\nTitle: " + this.getTitle() + "\nCategory: " + this.getCategory() + "\nArtist: " + this.getArtist() + "\nLength: " + this.getLength() + "\nCost: " + this.getCost() + "$" + tracksString;
 	}
 }

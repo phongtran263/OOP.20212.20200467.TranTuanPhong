@@ -23,6 +23,7 @@ public class Book extends Media{
 		this.setCategory(category);
 		this.setCost(cost);
 		this.authors = authors;
+		this.processContent();
 	}
 	
 	public void addAuthor(String authorName) {
@@ -58,7 +59,6 @@ public class Book extends Media{
 			authorsString+=this.authors.get(i);
 		}
 		
-		this.processContent();
 		String FreqString = "";	
 		int size = this.wordFrequency.size();
 		int i = 0;

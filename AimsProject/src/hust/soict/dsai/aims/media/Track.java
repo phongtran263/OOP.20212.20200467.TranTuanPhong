@@ -10,11 +10,11 @@ public class Track implements Playable{
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public int getLength() {
-		return length;
+		return this.length;
 	}
 
 	@Override
@@ -30,7 +30,9 @@ public class Track implements Playable{
 	@Override
 	public boolean equals(Object o) {
 		if(o instanceof Track) {
-			return (this.getTitle() == ((Track) o).getTitle()) && (this.getLength() == ((Track) o).getLength());
+			if((this.getTitle().equals(((Track) o).getTitle())) && (this.getLength() == ((Track) o).getLength())) {
+				return true;
+			}
 		}
 		
 		return false;

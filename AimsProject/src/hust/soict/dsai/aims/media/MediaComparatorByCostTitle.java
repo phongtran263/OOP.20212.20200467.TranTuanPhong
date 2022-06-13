@@ -14,8 +14,8 @@ public class MediaComparatorByCostTitle implements Comparator<Media> {
 			return 1;
 		}
 		
-		int l1 = o1.getTitle().length();
-		int l2 = o2.getTitle().length();
+		int l1 = o1.getTitle().toLowerCase().length();
+		int l2 = o2.getTitle().toLowerCase().length();
 		
 		int lenMin = Math.min(l1, l2);
 		for(int i = 0; i < lenMin; i++) {

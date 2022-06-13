@@ -1,5 +1,4 @@
 package hust.soict.dsai.aims.store.Store;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import hust.soict.dsai.aims.media.Media;
@@ -33,11 +32,9 @@ public class Store {
 	}
 	
 	public int removeMedia(Media media) {
-		for(int i = 0; i < this.itemsInStore.size(); i++) {
-			if(this.itemsInStore.get(i).getTitle().equals(media.getTitle())) {
-				System.out.println("This media has been removed.");
-				return 1;
-			}
+		if(this.itemsInStore.contains(media)) {
+			this.itemsInStore.remove(media);
+			System.out.println("This media has bee removed.");
 		}
 		
 		System.out.println("This media is not exist.");
@@ -59,14 +56,14 @@ public class Store {
 
 		for(int i = 0; i < this.itemsInStore.size(); i++) {
 			Media media = this.itemsInStore.get(i);
-			if(title.equals(media.getTitle())) {
+			if(title.toLowerCase().equals(media.getTitle().toLowerCase())) {
 				System.out.println("Found media: " + media.toString());
 				return media;
 			}
 		}
 		
-		System.out.println("Disc is not found.");		
-		return new Media(false);
+		System.out.println("Media is not found.");		
+		return null;
 	}
 	
 	public void print() {
@@ -85,7 +82,7 @@ public class Store {
 		for(int i = 0; i < this.itemsInStore.size(); i++) {
 			String playable = "";
 			if(this.itemsInStore.get(i) instanceof Playable) {
-				playable = "\nPlay";
+				playable = "\n**Play**";
 			}
 			System.out.print((i+1) + ". ");
 			System.out.println(this.itemsInStore.get(i).toString() + playable);
