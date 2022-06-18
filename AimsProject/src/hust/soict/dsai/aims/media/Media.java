@@ -3,7 +3,7 @@ package hust.soict.dsai.aims.media;
 import java.time.LocalDate;
 import java.util.Comparator;
 
-public class Media implements Comparable<Media>{
+public abstract class Media implements Comparable<Media>{
 
 	private static int nbMedia = 0;
 	private int id = nbMedia;
