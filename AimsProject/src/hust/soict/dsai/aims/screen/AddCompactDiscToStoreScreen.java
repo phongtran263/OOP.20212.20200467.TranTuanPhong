@@ -113,6 +113,10 @@ public class AddCompactDiscToStoreScreen extends JFrame implements ActionListene
 					cd.setArtist(artist.getText());
 					cd.setCost(Float.parseFloat(cost.getText()));
 					store.addMedia(cd);					
+					title.setText("");
+					artist.setText("");
+					category.setText("");
+					cost.setText("");
 				}
 			}
 			

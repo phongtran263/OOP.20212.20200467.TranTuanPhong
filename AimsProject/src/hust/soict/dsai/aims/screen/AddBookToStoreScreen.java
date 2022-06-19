@@ -66,7 +66,12 @@ public class AddBookToStoreScreen extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == addButton) {
 					Book book = new Book(title.getText(), authorsList, content.getText(), category.getText(), Float.parseFloat(cost.getText()));		
-					store.addMedia(book);					
+					store.addMedia(book);
+					title.setText("");
+					authors.setText("");
+					content.setText("");
+					category.setText("");
+					cost.setText("");
 				}
 			}
 			

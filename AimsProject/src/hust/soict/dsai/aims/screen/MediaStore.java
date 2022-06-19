@@ -15,11 +15,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import hust.soict.dsai.aims.media.CompactDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
 
 public class MediaStore extends JPanel {
 	private Media media;
+	private static JDialog d = new JDialog(new JFrame(), "Play Media");;
 	
 	public MediaStore(Media media) {
 		this.media = media;
@@ -39,13 +42,19 @@ public class MediaStore extends JPanel {
 		
 		JPanel panel = new JPanel();
 		if(media instanceof Playable) {
-			JButton playButton = new JButton("Play");
+			String txt = "";
+			if(media instanceof CompactDisc) {
+				txt = "CD";
+			}
+			else if(media instanceof DigitalVideoDisc) {
+				txt = "DVD";
+			}
+			JButton playButton = new JButton("Play " + txt);
 			playButton.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(e.getSource() == playButton) {
-						JDialog d = new JDialog(new JFrame(), "Play Media");
 						JPanel p = new JPanel();
 						p.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 						JLabel l = new JLabel(((Playable) media).playStringForGUI());
