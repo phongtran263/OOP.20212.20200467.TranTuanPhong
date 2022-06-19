@@ -105,7 +105,7 @@ public class AddDigitalVideoDiscToStoreScreen extends JFrame implements ActionLi
 			}
 			
 		});
-		panel.add(new JLabel("Choose adding DVD options: "), 0);
+		panel.add(new JLabel("Choose adding DVD option: "), 0);
 		panel.add(addingOptionscb, 1);
 
 		JButton addButton = new JButton("Add");
