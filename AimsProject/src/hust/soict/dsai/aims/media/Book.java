@@ -85,4 +85,8 @@ public class Book extends Media{
 			this.wordFrequency.compute(s, (k, v) -> v == null ? 1 : v + 1);
 		}
 	}
+	
+	public void setContent(String content) {
+		this.content = content;
+	}
 }
