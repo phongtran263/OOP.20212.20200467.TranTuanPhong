@@ -1,4 +1,4 @@
-package hust.soict.dsai.aims.store.Store;
+package hust.soict.dsai.aims.store;
 import java.util.ArrayList;
 
 import hust.soict.dsai.aims.media.Media;
@@ -92,5 +92,9 @@ public class Store {
 	
 	public Media getMediaAtIndex(int index) {
 		return this.itemsInStore.get(index);
+	}
+
+	public ArrayList<Media> getItemInStore() {
+		return this.itemsInStore;
 	}
 }

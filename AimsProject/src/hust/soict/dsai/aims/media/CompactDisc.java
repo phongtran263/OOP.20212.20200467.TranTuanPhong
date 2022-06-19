@@ -15,6 +15,10 @@ public class CompactDisc extends Disc implements Playable{
 		this.tracks = tracks;
 	}
 	
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+
 	public void addTrack(Track track) {
 		if(this.tracks.contains(track)) {
 			System.out.println("This track has been already existed.");
@@ -53,13 +57,25 @@ public class CompactDisc extends Disc implements Playable{
 
 	@Override
 	public void play() {
-		System.out.println("Playing track: " + this.getTitle());
+		System.out.println("Playing CD: " + this.getTitle());
 		System.out.println("Artist: " + this.artist);
 		System.out.println("Total length: " + this.getLength());
 		
 		for(Track t: this.tracks) {
 			t.play();
 		}
+	}
+	
+	public String playStringForGUI() {
+		String result = "<html>Playing CD: " + this.getTitle() + "<br>" + "Artist: " + this.artist + "<br>" + "Total length: " + this.getLength() + "<br>";
+		for(Track t: this.tracks) {
+			result+="<br>";
+			String s = t.playStringForGUI();
+			result+=s.substring(6, s.length() - 7);
+		}
+		result+="</html>";
+
+		return result;
 	}
 
 	public String toString() {
