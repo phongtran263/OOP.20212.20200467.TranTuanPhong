@@ -25,8 +25,10 @@ public class PainterController {
 
     @FXML
     void drawingAreaMouseDragged(MouseEvent event) {
-    	Circle newCircle = new Circle(event.getX(), event.getY(), this.sizeCircle, this.color);
-    	drawingAreaPane.getChildren().add(newCircle);
+    	if(event.getX() >= this.sizeCircle && event.getX() <= 544 - this.sizeCircle && event.getY() >= this.sizeCircle && event.getY() <= 464 - this.sizeCircle) {
+	    	Circle newCircle = new Circle(event.getX(), event.getY(), this.sizeCircle, this.color);
+	    	drawingAreaPane.getChildren().add(newCircle);
+    	}
     }
 
 
