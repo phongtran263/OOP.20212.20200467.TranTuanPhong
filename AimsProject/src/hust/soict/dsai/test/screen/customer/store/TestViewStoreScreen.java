@@ -2,7 +2,10 @@ package hust.soict.dsai.test.screen.customer.store;
 
 import java.util.ArrayList;
 
+import javax.naming.LimitExceededException;
+
 import hust.soict.dsai.aims.cart.Cart.Cart;
+import hust.soict.dsai.aims.exception.ExistException;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
@@ -19,7 +22,7 @@ public class TestViewStoreScreen extends Application {
 	private static Store store;
 	private static Cart cart;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException, ExistException {
 		store = new Store();
 		cart = new Cart();
 		
@@ -94,7 +97,7 @@ public class TestViewStoreScreen extends Application {
 		CompactDisc cd = new CompactDisc("p", "p", "p", new ArrayList<Track>(), 10);
 		Track tr1 = new Track("p1", 1);
 		Track tr2 = new Track("p2", 9);
-		Track tr3 = new Track("p3", 1);
+		Track tr3 = new Track("p3", -1);
 		cd.addTrack(tr1);
 		cd.addTrack(tr2);
 		cd.addTrack(tr3);
