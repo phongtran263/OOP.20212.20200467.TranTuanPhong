@@ -1,7 +1,9 @@
 package hust.soict.dsai.aims.cart.Cart;
-import java.util.ArrayList;
 import java.util.Collections;
 
+import javax.naming.LimitExceededException;
+
+import hust.soict.dsai.aims.exception.ExistException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
 import javafx.collections.FXCollections;
@@ -14,14 +16,16 @@ public class Cart {
 	private boolean ChangeStatus = true;
 	private Media luckyOne = null;
 	
-	public void addMedia(Media media) {
+	public void addMedia(Media media) throws LimitExceededException, ExistException {
 		if(this.itemsOrdered.size() >= MAX_NUMBERS_ORDERED) {
 			System.out.println("The cart is almost full.");
+			throw new LimitExceededException("ERROR: The number of medias has reached its limit");
 		}
 		
 		else {
 			if(itemsOrdered.contains(media)) {
 				System.out.println("This media has been already in the cart.");
+				throw new ExistException("ERROR: This media has been already in the cart");
 			} 
 
 			else {
@@ -32,12 +36,12 @@ public class Cart {
 		}
 	}
 	
-	public void addMedia(Media media1, Media media2) {
+	public void addMedia(Media media1, Media media2) throws LimitExceededException, ExistException {
 		this.addMedia(media1);
 		this.addMedia(media2);
 	}
 	
-	public int addMedia(Media[] mediaList) {
+	public int addMedia(Media[] mediaList) throws LimitExceededException, ExistException {
 		int maxNumMediaAdd = Math.min(MAX_NUMBERS_ORDERED - this.itemsOrdered.size(), mediaList.length);
 		
 		for(int i = 0; i < maxNumMediaAdd; i++) {
@@ -60,6 +64,7 @@ public class Cart {
 			this.itemsOrdered.remove(media);
 			System.out.println("This media has bee removed.");
 			this.ChangeStatus = true;
+			return 1;
 		}
 		
 		System.out.println("This media is not exist.");

@@ -1,6 +1,9 @@
 package hust.soict.dsai.aims.media;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import hust.soict.dsai.aims.exception.PlayerException;
 
 public class CompactDisc extends Disc implements Playable{
 	private String artist;
@@ -56,39 +59,63 @@ public class CompactDisc extends Disc implements Playable{
 	}
 
 	@Override
-	public void play() {
-		System.out.println("Playing CD: " + this.getTitle());
-		System.out.println("Artist: " + this.artist);
-		System.out.println("Total length: " + this.getLength());
-		
-		for(Track t: this.tracks) {
-			t.play();
+	public void play() throws PlayerException {
+		if(this.getLength() > 0) {
+			System.out.println("Playing CD: " + this.getTitle());
+			System.out.println("Artist: " + this.artist);
+			System.out.println("Total length: " + this.getLength());
+			
+			Iterator iter = tracks.iterator();
+			Track nextTrack;
+			while(iter.hasNext()) {
+				nextTrack = (Track) iter.next();
+				try {
+					nextTrack.play();
+				} catch(PlayerException e) {
+					throw e;
+				}
+			}
+		}
+		else {
+			throw new PlayerException("ERROR: CD length is non-possitive!");
 		}
 	}
 	
 	@Override
-	public String playString() {
-		String result= "";
-		
-		result+= ("Playing CD: " + this.getTitle());
-		result+= ("\nArtist: " + this.artist);
-		result+= ("\nTotal length: " + this.getLength() + "\n");
-		
-		for(Track t : this.tracks)
-			result+= (t.playString() + "\n");
-		
-		return result;
+	public String playString() throws PlayerException {
+		if(this.getLength() > 0) {
+			String result= "";
+			
+			result+= ("Playing CD: " + this.getTitle());
+			result+= ("\nArtist: " + this.artist);
+			result+= ("\nTotal length: " + this.getLength() + "\n");
+			
+			Iterator iter = tracks.iterator();
+			Track nextTrack;
+			while(iter.hasNext()) {
+				nextTrack = (Track) iter.next();
+				try {
+					result+= (nextTrack.playString() + "\n");
+				} catch(PlayerException e) {
+					throw new PlayerException("ERROR: Track length is non-possitive!");
+				}
+			}
+			return result;
+		}
+		else {
+			throw new PlayerException("ERROR: CD length is non-possitive!");
+		}
 	}
 	
 	public String getArtist() {
 		return artist;
 	}
 
-	public String playStringForGUI() {
+	public String playStringForGUISwing() {
 		String result = "<html>Playing CD: " + this.getTitle() + "<br>" + "Artist: " + this.artist + "<br>" + "Total length: " + this.getLength() + "<br>";
 		for(Track t: this.tracks) {
 			result+="<br>";
-			String s = t.playStringForGUI();
+			String s = t.playStringForGUISwing();
 			result+=s.substring(6, s.length() - 7);
 		}
 		result+="</html>";

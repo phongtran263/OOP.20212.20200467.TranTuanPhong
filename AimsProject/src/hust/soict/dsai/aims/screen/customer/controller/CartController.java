@@ -3,6 +3,7 @@ package hust.soict.dsai.aims.screen.customer.controller;
 import java.io.IOException;
 
 import hust.soict.dsai.aims.cart.Cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
 import hust.soict.dsai.aims.store.Store;
@@ -171,13 +172,21 @@ public class CartController {
     
     @FXML
     void btnPlayPressed(ActionEvent event) {
-    	Media media = tblMedia.getSelectionModel().getSelectedItem();
-    
-    	Alert alert = new Alert(AlertType.INFORMATION);
-    	alert.setTitle("Play Media");
-    	alert.setHeaderText(null);
-    	alert.setContentText(((Playable) media).playString());
-    	alert.showAndWait();
+    	try {
+	    	Media media = tblMedia.getSelectionModel().getSelectedItem();
+	    
+	    	Alert alert = new Alert(AlertType.INFORMATION);
+	    	alert.setTitle("Play Media");
+	    	alert.setHeaderText(null);
+	    	alert.setContentText(((Playable) media).playString());
+	    	alert.showAndWait();
+    	} catch(PlayerException e) {
+	    	Alert alert = new Alert(AlertType.ERROR);
+	    	alert.setTitle("Illegal length");
+	    	alert.setHeaderText(null);
+	    	alert.setContentText(e.getMessage());
+	    	alert.showAndWait();
+    	}
     }
 
     @FXML
