@@ -15,7 +15,7 @@ public class CompactDisc extends Disc implements Playable{
 		this.setCategory(category);
 		this.setCost(cost);
 		this.artist = artist;
-		this.tracks = tracks;
+		this.tracks = tracks; 
 	}
 	
 	public void setArtist(String artist) {
