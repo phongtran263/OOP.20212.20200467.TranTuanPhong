@@ -4,11 +4,13 @@ import java.util.Collections;
 
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
 	
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 	private boolean ChangeStatus = true;
 	private Media luckyOne = null;
 	
@@ -25,6 +27,7 @@ public class Cart {
 			else {
 				this.itemsOrdered.add(media);
 				System.out.println("This media has been added.");
+				this.ChangeStatus = true;
 			}
 		}
 	}
@@ -56,6 +59,7 @@ public class Cart {
 		if(this.itemsOrdered.contains(media)) {
 			this.itemsOrdered.remove(media);
 			System.out.println("This media has bee removed.");
+			this.ChangeStatus = true;
 		}
 		
 		System.out.println("This media is not exist.");
@@ -122,8 +126,8 @@ public class Cart {
 		return null;
 	}
 	
-	public ArrayList<Media> SearchByTitle(String title) {
-		ArrayList<Media> result = new ArrayList<Media>();
+	public ObservableList<Media> SearchByTitle(String title) {
+		ObservableList<Media> result = FXCollections.observableArrayList();
 		
 		for(int i = 0; i < this.itemsOrdered.size(); i++) {
 			if(this.itemsOrdered.get(i).isMatch(title)) {
@@ -209,8 +213,12 @@ public class Cart {
 		System.out.println("***************************************************");
 	}
 	
+	public ObservableList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
+
 	public void Empty() {
-		this.itemsOrdered = new ArrayList<Media>();
+		this.itemsOrdered = FXCollections.observableArrayList();
 		System.out.println("The cart is empty now!");
 	}
 	

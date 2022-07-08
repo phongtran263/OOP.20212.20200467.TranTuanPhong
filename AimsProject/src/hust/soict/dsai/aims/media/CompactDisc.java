@@ -66,6 +66,24 @@ public class CompactDisc extends Disc implements Playable{
 		}
 	}
 	
+	@Override
+	public String playString() {
+		String result= "";
+		
+		result+= ("Playing CD: " + this.getTitle());
+		result+= ("\nArtist: " + this.artist);
+		result+= ("\nTotal length: " + this.getLength() + "\n");
+		
+		for(Track t : this.tracks)
+			result+= (t.playString() + "\n");
+		
+		return result;
+	}
+	
+	public String getArtist() {
+		return artist;
+	}
+
 	public String playStringForGUI() {
 		String result = "<html>Playing CD: " + this.getTitle() + "<br>" + "Artist: " + this.artist + "<br>" + "Total length: " + this.getLength() + "<br>";
 		for(Track t: this.tracks) {
@@ -87,6 +105,6 @@ public class CompactDisc extends Disc implements Playable{
 			tracksString+= this.tracks.get(i).toString();
 		}
 		
-		return "CD" + "\nTitle: " + this.getTitle() + "\nCategory: " + this.getCategory() + "\nArtist: " + this.artist + "\nLength: " + this.getLength() + "\nCost: " + this.getCost() + "$\n" + tracksString + "\n";
+		return "CD" + "\nTitle: " + this.getTitle() + "\nCategory: " + this.getCategory() + "\nArtist: " + this.artist + "\nLength: " + this.getLength() + "\nCost: " + this.getCost() + "$\n" + tracksString;    
 	}
 }

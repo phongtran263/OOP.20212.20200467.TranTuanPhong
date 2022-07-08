@@ -20,7 +20,7 @@ public class Track implements Playable, Comparable<Track>{
 	@Override
 	public void play() {
 		System.out.println("Playing track: " + this.getTitle());
-		System.out.println("track length: " + this.getLength());
+		System.out.println("Track length: " + this.getLength());
 	}
 
 	public String toString() {
@@ -56,5 +56,15 @@ public class Track implements Playable, Comparable<Track>{
 	@Override
 	public String playStringForGUI() {
 		return "<html>Playing track: " + this.getTitle() + "<br>" + "track length: " + this.getLength() + "<br></html>";
+	}
+
+	@Override
+	public String playString() {
+		String result = "";
+		
+		result+= ("Playing track: " + this.getTitle() + "\n");
+		result+= ("Track length: " + this.getLength());
+		
+		return result;
 	}
 }

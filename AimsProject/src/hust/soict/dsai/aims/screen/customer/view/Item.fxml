@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane style="-fx-border-color: black;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<AnchorPane style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="175.0" prefWidth="305.0">
          <children>
@@ -24,8 +23,14 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="305.0" spacing="20.0">
                <children>
-                  <Button fx:id="btnAddToCart" mnemonicParsing="false" onAction="#btnAddToCartClicked" prefHeight="50.0" prefWidth="305.0" text="Add to cart" />
-                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayClicked" prefHeight="50.0" prefWidth="305.0" text="Play" />
+                  <Button fx:id="btnAddToCart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddToCartClicked" prefHeight="25.0" prefWidth="90.0" text="Add to cart" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="btnPlay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnPlayClicked" prefHeight="25.0" prefWidth="90.0" text="Play" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
          </children>
