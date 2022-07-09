@@ -89,4 +89,18 @@ public class Book extends Media{
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		try {
+			if(o instanceof Book) {
+				return this.getTitle() == ((Book) o).getTitle() && this.getCost() == ((Book) o).getCost();
+			}
+			return false;
+		} catch(NullPointerException e) {
+			throw new NullPointerException();
+		} catch(ClassCastException e) {
+			throw new ClassCastException();
+		}
+	}
 }

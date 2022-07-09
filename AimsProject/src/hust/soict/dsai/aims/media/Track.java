@@ -36,13 +36,19 @@ public class Track implements Playable, Comparable<Track>{
 	
 	@Override
 	public boolean equals(Object o) {
-		if(o instanceof Track) {
-			if((this.getTitle().equals(((Track) o).getTitle())) && (this.getLength() == ((Track) o).getLength())) {
-				return true;
+		try {
+			if(o instanceof Track) {
+				if((this.getTitle().equals(((Track) o).getTitle())) && (this.getLength() == ((Track) o).getLength())) {
+					return true;
+				}
 			}
+			
+			return false;
+		} catch(NullPointerException e) {
+			throw new NullPointerException();
+		} catch(ClassCastException e) {
+			throw new ClassCastException();
 		}
-		
-		return false;
 	}
 
 	@Override
