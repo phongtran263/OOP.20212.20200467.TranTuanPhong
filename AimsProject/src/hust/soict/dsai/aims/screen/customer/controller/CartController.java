@@ -35,6 +35,8 @@ import javafx.stage.Stage;
 public class CartController {
 	private Cart cart;
 	private Store store;
+	private boolean costIncrease = false;
+	private boolean titleIncrease = true;
 	
 	public CartController(Store store, Cart cart) {
 		this.store = store;
@@ -78,6 +80,18 @@ public class CartController {
     private TextField tfFilter;
     
     @FXML
+    private ToggleGroup sortCategory;
+    
+    @FXML
+    private RadioButton radioBtnSortCost;
+    
+    @FXML
+    private RadioButton radioBtnSortTitle;
+    
+    @FXML
+    private Button Sort;
+
+    @FXML
     private TableView<Media> tblMedia;
 
     @FXML
@@ -107,7 +121,7 @@ public class CartController {
 
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				changeInListener(newValue);
+				changeWhenFilter(newValue);
 			}
     	});
     	
@@ -115,7 +129,7 @@ public class CartController {
 
 			@Override
 			public void changed(ObservableValue<? extends Toggle> changef, Toggle oldValue, Toggle newVlaue) {
-				changeInListener(tfFilter.getText());
+				changeWhenFilter(tfFilter.getText());
 			}
     	});
     }
@@ -158,7 +172,7 @@ public class CartController {
     	}
     }
     
-    void changeInListener(String newValue) {
+    void changeWhenFilter(String newValue) {
     	if(newValue.strip() != "") {
 			showFilteredMedia(newValue);
 		}
@@ -224,5 +238,23 @@ public class CartController {
     	}
     	alert.setContentText("Your order is created.\nTotal cost: " + cart.totalCost(true) + " $");
     	alert.showAndWait();
+    }
+    
+    @FXML
+    void btnSortPressed(ActionEvent event) {
+    	if(radioBtnSortCost.isSelected()) {
+	    	if(cart.getItemsOrdered() != null) {
+	       		cart.CartSortByCostTitle(false, this.costIncrease);
+	       		this.costIncrease = !this.costIncrease;
+	    		tblMedia.setItems(cart.getItemsOrdered());
+	    	}
+    	}
+    	else {
+	    	if(cart.getItemsOrdered() != null) {
+	       		cart.CartSortByTitleCost(false, this.titleIncrease);
+	       		this.titleIncrease = !this.titleIncrease;
+	    		tblMedia.setItems(cart.getItemsOrdered());
+	    	}
+    	}
     }
 }

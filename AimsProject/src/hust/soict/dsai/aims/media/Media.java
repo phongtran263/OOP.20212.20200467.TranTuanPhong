@@ -12,8 +12,10 @@ public abstract class Media implements Comparable<Media>{
 	private float cost;
 	private LocalDate dateAdded;
 	
-	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
-	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+	public static final Comparator<Media> COMPARE_BY_INCREASE_TITLE_COST = new MediaComparatorByTitleCost(true);
+	public static final Comparator<Media> COMPARE_BY_DECREASE_TITLE_COST = new MediaComparatorByTitleCost(false);
+	public static final Comparator<Media> COMPARE_BY_INCREASE_COST_TITLE = new MediaComparatorByCostTitle(true);
+	public static final Comparator<Media> COMPARE_BY_DECREASE_COST_TITLE = new MediaComparatorByCostTitle(false);
 	
 	public Media() {
 		nbMedia++;

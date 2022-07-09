@@ -64,7 +64,7 @@ public class Cart {
 			this.itemsOrdered.remove(media);
 			System.out.println("This media has bee removed.");
 			this.ChangeStatus = true;
-			return 1;
+		 	return 1;
 		}
 		
 		System.out.println("This media is not exist.");
@@ -96,8 +96,13 @@ public class Cart {
 		return (float)Math.round(cost*100)/100;
 	}
 	
-	public void CartSortByCostTitle(boolean show) {
-		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+	public void CartSortByCostTitle(boolean show, boolean increase) {
+		if(increase) {
+		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_INCREASE_COST_TITLE);
+		}
+		else {
+			Collections.sort(this.itemsOrdered, Media.COMPARE_BY_DECREASE_COST_TITLE);
+		}
 		
 		if(show) {
 			System.out.println("sort by cost: ");
@@ -107,9 +112,14 @@ public class Cart {
 		}
 	}
 	
-	public void CartSortByTitleCost(boolean show) {
-		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_TITLE_COST);
-
+	public void CartSortByTitleCost(boolean show, boolean increase) {
+		if(increase) {
+			Collections.sort(this.itemsOrdered, Media.COMPARE_BY_INCREASE_TITLE_COST);
+		}
+		else {
+			Collections.sort(this.itemsOrdered, Media.COMPARE_BY_DECREASE_TITLE_COST);
+		}
+		
 		if(show) {
 			System.out.println("sort by title: ");
 			for (int i = 0; i < this.itemsOrdered.size(); i++) {
@@ -202,11 +212,11 @@ public class Cart {
 	
 	public void Sortprint(String type) {
 		if(type == "title") {
-			this.CartSortByTitleCost(false);
+			this.CartSortByTitleCost(false, true);
 		}
 		
 		else if(type == "cost") {
-			this.CartSortByCostTitle(false);
+			this.CartSortByCostTitle(false, false);
 		}
 		System.out.println("***********************CART***********************");
 		System.out.println("Ordered Items:");

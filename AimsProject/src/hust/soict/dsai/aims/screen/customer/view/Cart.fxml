@@ -55,6 +55,18 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnSort" mnemonicParsing="false" onAction="#btnSortPressed" text="Sort" />
+                  <RadioButton fx:id="radioBtnSortCost" mnemonicParsing="false" selected="true" text="By Cost">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="SortCategory" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radioBtnSortTitle" mnemonicParsing="false" text="By Title" toggleGroup="$SortCategory">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </RadioButton>
                </children>
             </HBox>
             <TableView fx:id="tblMedia" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="627.0" prefWidth="984.0">
