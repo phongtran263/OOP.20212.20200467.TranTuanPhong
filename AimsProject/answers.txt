@@ -33,3 +33,7 @@ Observe what happens and explain it in detail.
 ANSWER: When I iterate through the list and print out the information, the result of toString() method is correspond to each type of media at each iteration. 
 	We know that Media class inherit the toString() method from Object class, and then in this case, the toString() method is overridden by CompactDisc, DigitalVideoDisc, Book which are children of Media class. The toString() method inside the three children will have more priority than inside the Media class.
 	When we iterate through the list of media, Java determine the class type of each element and find the toString() inside the class(CD, DVD or Book), if not exists, it continue to find inside the Media class, if not exist, it continue to find in the Object class and finally execute the toString() method.
+	
+QUESTION: The Aims class must be updated to handle any exceptions generated when the play() methods are called. What happens when you don’t update for them to catch?
+
+ANSWER: There are some cases that  play() method throws PlayerException. So that, if Aims doesn't have any catch block to catch the exception, the program may get RuntimeException when the case that play() throws an exception. 
