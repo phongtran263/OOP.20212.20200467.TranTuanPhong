@@ -29,23 +29,23 @@ public class Aims extends Application {
 		try {
 			DigitalVideoDisc media1 = new DigitalVideoDisc("the Lion King", "Animation", "Roger Allers", 87, 19.95f);
 			store.addMedia(media1);
-			cart.addMedia(media1);
+//			cart.addMedia(media1);
 			
 			DigitalVideoDisc media2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
 			store.addMedia(media2);
-			cart.addMedia(media2);
+//			cart.addMedia(media2);
 			
 			DigitalVideoDisc media10 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 4.95f);
 			store.addMedia(media10);
-			cart.addMedia(media10);
+//			cart.addMedia(media10);
 			
 			DigitalVideoDisc media11 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 114.95f);
 			store.addMedia(media11);
-			cart.addMedia(media11);
+//			cart.addMedia(media11);
 			
 			DigitalVideoDisc media12 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 124.95f);
 			store.addMedia(media12);
-			cart.addMedia(media12);
+//			cart.addMedia(media12);
 			
 			DigitalVideoDisc media13 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 134.95f);
 			store.addMedia(media13);
