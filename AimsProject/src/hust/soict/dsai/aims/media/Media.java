@@ -79,6 +79,7 @@ public abstract class Media implements Comparable<Media>{
 
 	@Override
 	public int compareTo(Media o) {
+		try {
 		int l1 = this.getTitle().length();
 		int l2 = o.getTitle().length();
 		
@@ -102,7 +103,11 @@ public abstract class Media implements Comparable<Media>{
 			}
 		}
 
-		
 		return cl1 - cl2;
+		} catch(NullPointerException e) {
+			throw new NullPointerException();
+		} catch(ClassCastException e) {
+			throw new ClassCastException();
+		}
 	}
 }

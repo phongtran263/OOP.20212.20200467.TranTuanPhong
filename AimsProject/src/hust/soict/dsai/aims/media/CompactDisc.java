@@ -134,4 +134,18 @@ public class CompactDisc extends Disc implements Playable{
 		
 		return "CD" + "\nTitle: " + this.getTitle() + "\nCategory: " + this.getCategory() + "\nArtist: " + this.artist + "\nLength: " + this.getLength() + "\nCost: " + this.getCost() + "$\n" + tracksString;    
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		try {
+			if(o instanceof CompactDisc) {
+				return this.getTitle() == ((CompactDisc) o).getTitle() && this.getCost() == ((CompactDisc) o).getCost();
+			}
+			return false;
+		} catch(NullPointerException e) {
+			throw new NullPointerException();
+		} catch(ClassCastException e) {
+			throw new ClassCastException();
+		}
+	}
 }

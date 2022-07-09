@@ -87,5 +87,19 @@ public class DigitalVideoDisc extends Disc implements Playable{
 	public String playStringForGUISwing() {
 		return "<html>Playing DVD: " + this.getTitle() + "<br>" + "DVD length: " + this.length + "</html>";
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		try {
+			if(o instanceof DigitalVideoDisc) {
+				return this.getTitle() == ((DigitalVideoDisc) o).getTitle() && this.getCost() == ((DigitalVideoDisc) o).getCost();
+			}
+			return false;
+		} catch(NullPointerException e) {
+			throw new NullPointerException();
+		} catch(ClassCastException e) {
+			throw new ClassCastException();
+		}
+	}
 }
 
